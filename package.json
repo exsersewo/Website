@@ -1,0 +1,35 @@
+{
+  "name": "skuld-website",
+  "description": "Website for Skuld DiscordBot ( https://github.com/exsersewo/skuld )",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exsersewo/skuld-website.git"
+  },
+  "keywords": [],
+  "author": "exsersewo",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/exsersewo/skuld-website/issues"
+  },
+  "homepage": "https://github.com/exsersewo/skuld-website",
+  "contributors": [
+    "exsersewo"
+  ],
+  "dependencies": {
+    "express": "^4.16.2",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.0",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build-css": "stylus source/stylesheets/index.styl -o static/css",
+    "watch-css": "stylus source/stylesheets/index.styl -o static/css -w",
+    "clean": "rm -rf static\\css && mkdir -p static\\css",
+    "build": "npm run clean && npm run build-css",
+    "watch": "npm run clean && npm run watch-css & nodemon server -e js,jade",
+    "start": "node server"
+  }
+}

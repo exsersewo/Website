@@ -1,0 +1,978 @@
+[
+    {
+        "module":"accounts",
+        "commands":
+        [
+            {
+                "name":"money",
+                "description":"Gets your money or a user's money",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"profile",
+                "description":"Gets your profile or a user's profile",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"profile-ext",
+                "description":"Gets your extended profile or a user's extended profile",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"description",
+                "description":"Sets or clears your profile description",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"description", "required":false}]
+            },
+            {
+                "name":"daily",
+                "description":"Gets a daily currency, or can give it to someone else",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"give",
+                "description":"Give money to someone, show how nice you really are.",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true},{"name":"amount","required":true}]
+            },
+            {
+                "name":"syncname",
+                "description":"If for any reason the bot uses an old username of yours, sync it here",
+                "aliases":null,
+                "level":1,
+                "args":null
+            }
+        ]
+    },
+    {
+        "module":"actions",
+        "commands":
+        [
+            {
+                "name":"slap",
+                "description":"Because someone needs a good slappin' to set them straight.",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"kill",
+                "description":"https://youtu.be/qQ6wSei-NJU?t=1m4s",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"stab",
+                "description":"It's only a discord command, it wont hurt right?",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"hug",
+                "description":"Because with all this violence, there needs to be someone who just wants to hug.",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"punch",
+                "description":"POW!",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"shrug",
+                "description":"¯\\_(ツ)_/¯",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"adore",
+                "description":"Because someone is just so adorable you have to adore them.",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"kiss",
+                "description":"baka hentai 😳",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"grope",
+                "description":"I'm fairly certain whoever will do this is registered. 🤔",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"pet",
+                "description":"Someone remind you of a pet, or going for the cuteness factor?",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"glare",
+                "description":"dont. you. dare. do. it. 👀",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            }
+        ]
+    },
+    {
+        "module":"admin",
+        "commands":
+        [
+            {
+                "name":"say",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"channel", "required":true},{"name":"message", "required":true}]
+            },
+            {
+                "name":"roleids",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":null
+            },
+            {
+                "name":"mute",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"unmute",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"prune",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"amount", "required":true},{"name":"user", "required":false}]
+            },
+            {
+                "name":"kick",
+                "description":"",
+                "aliases":["dab","dabon"],
+                "level":2,
+                "args":[{"name":"user", "required":true},{"name":"reason", "required":false}]
+            },
+            {
+                "name":"ban",
+                "description":"",
+                "aliases":["naenae"],
+                "level":2,
+                "args":[{"name":"user", "required":true},{"name":"daystoprune", "required":false},{"name":"reason", "required":false}]
+            },
+            {
+                "name":"hackban",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"ids", "required":true}]
+            },
+            {
+                "name":"softban",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"user", "required":true},{"name":"reason", "required":false}]
+            },
+            {
+                "name":"setjrole",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":[{"name":"role", "required":false}]
+            },
+            {
+                "name":"autorole",
+                "description":"",
+                "aliases":null,
+                "level":2,
+                "args":null
+            },
+            {
+                "name":"setprefix",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"prefix", "required":false}]
+            },
+            {
+                "name":"setwelcome",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"message", "required":true}]
+            },
+            {
+                "name":"setwelcome",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"channel", "required":true},{"name":"message", "required":true}]
+            },
+            {
+                "name":"unsetwelcome",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":null
+            },
+            {
+                "name":"setleave",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"message", "required":true}]
+            },
+            {
+                "name":"setleave",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"channel", "required":true},{"name":"message", "required":true}]
+            },
+            {
+                "name":"unsetleave",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":null
+            },
+            {
+                "name":"addcommand",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"name", "required":true},{"name":"content", "required":false}]
+            },
+            {
+                "name":"deletecommand",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"name", "required":true}]
+            },
+            {
+                "name":"guildfeature",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"module", "required":true},{"name":"value", "required":true}]
+            },
+            {
+                "name":"guildmodule",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"module", "required":true},{"name":"value", "required":true}]
+            },
+            {
+                "name":"configurechannel",
+                "description":"",
+                "aliases":null,
+                "level":3,
+                "args":[{"name":"module", "required":true},{"name":"channel", "required":true}]
+            }
+        ]
+    },
+    {
+        "module":"fun",
+        "commands":
+        [
+            {
+                "name":"neko",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"lewdneko",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"kitsune",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"lewdkitsune",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"kitty",
+                "description":"",
+                "aliases":["cat", "cats","kittycat","kitty cat","meow","kitties","kittys"],
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"doggo",
+                "description":"",
+                "aliases":["dog","dogs","doggy"],
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"bird",
+                "description":"",
+                "aliases":["birb"],
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"llama",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"seal",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"eightball",
+                "description":"",
+                "aliases":["8ball"],
+                "level":1,
+                "args":[{"name":"question", "required":false}]
+            },
+            {
+                "name":"roll",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"upper", "required":true}]
+            },
+            {
+                "name":"pasta",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"cmd", "required":true},{"name":"title","required":true}]
+            },
+            {
+                "name":"pasta",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"cmd", "required":true},{"name":"title","required":true},{"name":"content","required":true}]
+            },
+            {
+                "name":"pasta",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"title","required":true}]
+            },
+            {
+                "name":"fuse",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"id1", "required":true},{"name":"id2","required":true}]
+            },
+            {
+                "name":"strawpoll",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"title", "required":true},{"name":"options","required":true}]
+            },
+            {
+                "name":"strawpoll",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"url", "required":true}]
+            },
+            {
+                "name":"strawpoll",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"id", "required":true}]
+            },
+            {
+                "name":"xkcd",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"cah",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"time",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"offset", "required":false}]
+            },
+            {
+                "name":"roast",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"dadjoke",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"pickup",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"apod",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"choose",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"choices", "required":true}]
+            },
+            {
+                "name":"yn",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"question", "required":false}]
+            },
+            {
+                "name":"heal",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"amount", "required":true},{"name":"user","required":false}]
+            }
+        ]
+    },
+    {
+        "module":"help",
+        "commands":
+        [
+            {
+                "name":"help",
+                "description":"Gets all commands or information about a specific command",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"command", "required":false}]
+            }
+        ]
+    },
+    {
+        "module":"information",
+        "commands":
+        [
+            {
+                "name":"server",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"server emojis",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"server roles",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"bot",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"id guild",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"id",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"id",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"channel", "required":true}]
+            },
+            {
+                "name":"serverinvite",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"invite",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"userratio",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"avatar",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"mods",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"createinvite",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"channel","required":true},{"name":"maxAge","required":false},{"name":"maxUses","required":false},{"name":"permanent","required":false},{"name":"unique","required":false}]
+            },
+            {
+                "name":"nick",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"me",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"whois",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"roles",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":false}]
+            },
+            {
+                "name":"epoch",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"epoch", "required":false}]
+            },
+            {
+                "name":"eooch",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"epoch", "required":true}]
+            },
+            {
+                "name":"isup",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"website", "required":true}]
+            },
+            {
+                "name":"time",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"primarytimezone", "required":true},{"name":"time", "required":true},{"name":"timezones", "required":true}]
+            }
+        ]
+    },
+    {
+        "module":"owner",
+        "commands":
+        [
+            {
+                "name":"stop",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"populate",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"shardrestart",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"shardid", "required":true}]
+            },
+            {
+                "name":"setgame",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"game", "required":true}]
+            },
+            {
+                "name":"resetgame",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"dumpshards",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"getshard",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"shardid", "required":false}]
+            },
+            {
+                "name":"shard",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"name",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"name", "required":true}]
+            },
+            {
+                "name":"status",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"status", "required":true}]
+            },
+            {
+                "name":"moneyadd",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"user", "required":true},{"name":"amount", "required":true}]
+            },
+            {
+                "name":"leave",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"id", "required":true}]
+            },
+            {
+                "name":"syncguilds",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"rebuildguilds",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            },
+            {
+                "name":"eval",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"code", "required":true}]
+            },
+            {
+                "name":"pubstats",
+                "description":"",
+                "aliases":null,
+                "level":5,
+                "args":null
+            }
+        ]
+    },
+    {
+        "module":"pokemon",
+        "commands":
+        [
+            {
+                "name":"pokemon",
+                "description":"Gets pokemon information by name",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"name", "required":true},{"name":"group", "required":false}]
+            },
+            {
+                "name":"pokemon",
+                "description":"Gets pokemon information by id",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"id", "required":true},{"name":"group", "required":false}]
+            }
+        ]
+    },
+    {
+        "module":"search",
+        "commands":
+        [
+            {
+                "name":"twitch",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"streamer", "required":true}]
+            },
+            {
+                "name":"instagram",
+                "description":"",
+                "aliases":["insta"],
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"search",
+                "description":"",
+                "aliases":["s"],
+                "level":1,
+                "args":[{"name":"platform", "required":true},{"name":"query", "required":true}]
+            },
+            {
+                "name":"lmgtfy",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"engine", "required":true},{"name":"query","required":true}]
+            },
+            {
+                "name":"urban",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"phrase", "required":false}]
+            },
+            {
+                "name":"osu!",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"osu!taiko",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"osu!ctb",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"osu!mania",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"user", "required":true}]
+            },
+            {
+                "name":"wikipedia",
+                "description":"",
+                "aliases":["wiki"],
+                "level":1,
+                "args":[{"name":"langcode", "required":true},{"name":"query", "required":true}]
+            },
+            {
+                "name":"gif",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"query", "required":true}]
+            },
+            {
+                "name":"define",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"word", "required":true}]
+            },
+            {
+                "name":"reddit",
+                "description":"",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"subreddit", "required":true},{"name":"amount", "required":false}]
+            }
+        ]
+    },
+    {
+        "module":"stats",
+        "commands":
+        [
+            {
+                "name":"stats",
+                "description":"Gets bot statistics",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"ping",
+                "description":"Gets bot ping to discord",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"uptime",
+                "description":"Gets uptime of bot",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"netfw",
+                "description":"Gets .NET Framework Version",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"discord",
+                "description":"Gets discord lib version",
+                "aliases":null,
+                "level":1,
+                "args":null
+            }
+        ]
+    },
+    {
+        "module":"weeb",
+        "commands":
+        [
+            {
+                "name":"manga",
+                "description":"Gets manga information",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"mangatitle", "required":true}]
+            },
+            {
+                "name":"anime",
+                "description":"Gets anime information",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"animetitle", "required":true}]
+            },
+            {
+                "name":"weebgif",
+                "description":"Gets a weebgif",
+                "aliases":null,
+                "level":1,
+                "args":null
+            }
+        ]
+    }
+]
