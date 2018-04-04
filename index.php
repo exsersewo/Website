@@ -4,6 +4,7 @@
     $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".(isset($page) ? '/'.$page : '')."$_SERVER[REQUEST_URI]";
     $pagetitle = "Skuld";
     $shortdesc = "Skuld is a Discord Bot aiming to make Discord Servers fun and active.";
+    $img = "content/img/skuld.png";
     if($page==null)
     {header('Location: '.(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/home");die();}
 echo "<!DOCTYPE HTML><html lang=\"en\"><head><title>".$pagetitle."</title>
@@ -12,20 +13,20 @@ echo "<!DOCTYPE HTML><html lang=\"en\"><head><title>".$pagetitle."</title>
 <meta name=\"msapplication-navbutton-color\" content=\"#d9bbf9\">
 <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">
 <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">
-<link rel=\"icon\" sizes=\"192x192\" href=\"content/img/skuld.png\">
+<link rel=\"icon\" sizes=\"192x192\" href=\"".$img."\">
 <meta property=\"type\" content=\"website\" />
 <meta name=\"url\" content=\"".$actual_link."\" />
 <meta name=\"title\" content=\"".$pagetitle."\" />
 <meta name=\"description\" content=\"".$shortdesc."\" />
 <meta name=\"site_name\" content=\"".$pagetitle."\" />
-<meta name=\"image\" content=\"content/img/skuld.png\" />
+<meta name=\"image\" content=\"".$img."\" />
 <meta name=\"locale\" content=\"en-GB\" />
 <meta property=\"og:type\" content=\"website\" />
 <meta property=\"og:url\" content=\"".$actual_link."\" />
 <meta property=\"og:title\" content=\"".$pagetitle."\" />
 <meta property=\"og:description\" content=\"".$shortdesc."\" />
 <meta property=\"og:site_name\" content=\"".$pagetitle."\" />
-<meta property=\"og:image\" content=\"content/img/skuld.png\" />
+<meta property=\"og:image\" content=\"".$img."\" />
 <meta property=\"og:locale\" content=\"en-GB\" />
 <meta http-equiv=\"Cache-control\" content=\"public\">
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">

@@ -30,7 +30,7 @@ foreach($data as $shard)
 {
     $servers+= $shard->server_count;
 }
-
+echo '<head><title>Server Stats</title><link rel="icon" sizes="192x192" href="../content/img/skuld.png"></head><body>';
 echo '<p>As of '.$formated_date.' out of '.count($data).' shards, the amount of servers are: </p>';
 echo '<progress id="servercount-slave" style="display:none;" value="0" max="'.$servers.'"></progress><p id="servercount"></p>';
 echo '<script type="text/javascript">
@@ -74,3 +74,4 @@ body p{
     font-size:25px;
 }
 </style>
+</body>
