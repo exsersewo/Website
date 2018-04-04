@@ -55,7 +55,7 @@ if ($page == "home")
 if ($page == "gif")
 {
     ob_end_clean();include 'templates/gif.php';
-    echo '<script type="text/javascript" src="static/js/jquery-3.3.1.min.js"></script><script type="text/javascript" src="static/js/jquery-ui.min.js"></script>';
+    echo '<script type="text/javascript" src="static/js/jquery-3.3.1.min-w-jqui-1.12.1.min.js"></script>';
 }
 
 ?>

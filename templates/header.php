@@ -1,15 +1,15 @@
 <style type="text/css">
 #header, nav{margin:0 auto;padding:0;}
 #navbar{background-color:#00d2ff;}
-#header ul{display:table;margin:0 auto;width:auto;text-align:center;height:50px;padding:0;}
+#li-nav{display:table;margin:0 auto;width:auto;text-align:center;height:50px;padding:0;}
 #blend-bar{position:absolute;box-shadow:0px 2px 2px black;-moz-box-shadow:0px 2px 2px black;width:100%;height:2px;}
 #logo{background-color:#4873ff;height:150px;display:inline-table;width:100%;}
 #logo span a{text-decoration:none;color:white;cursor:default;}
 #logo span a:hover{text-shadow:0px 0px 30px #1500ef;}
 #logo span{display:table-cell;vertical-align:middle;color:white;text-shadow:0px 0px 10px #1500ef;}
-#header ul li{display:table-cell;vertical-align:middle;width:150px !important;}
-#header ul li a{color:black;text-align:center;text-decoration:none;height:50px;width:150px;}
-#header ul li:hover{background-color:#00ffd6;}
+#li-nav li{display:table-cell;vertical-align:middle;width:150px !important;}
+#li-nav li a{color:black;text-align:center;text-decoration:none;height:50px;width:150px;}
+#li-nav li:hover{background-color:#00ffd6;}
 #logo{text-align:center;font-size:50px;}
 #legal-list{padding:0;margin:0;width:150px;text-align:center;height:100px;position:absolute;}
 #legal-list li{padding:0;margin:0;width:150px !important;display:table-row;height:50px;background-color:#00d2ff;}
@@ -31,24 +31,22 @@
     </div>
     <div id="blend-bar"></div>
     <div id="navbar">
-            <ul id="li-nav" align="center">
+        <ul id="li-nav" align="center">
             <li><a href="/">Home</a></li>
             <li><a href="./commands">Commands</a></li>
             <li class="strikethrough"><a>Dashboard</a></li>
-            <li id='legal'><a id="legalhotlink" href='#'>Legal</a></li>
+            <li id='legal'>
+                <p><a id="legalhotlink" href='#'>Legal</a></p>
+                <ul id="legal-list" style="display:none;list-style:none;">
+                    <li><a class="legallink" href="#privacy">Privacy Policy</a></li>
+                    <li><a class="legallink" href="#terms">Terms of Service</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
-<div id="content">
-    <ul id="legal-list" style="display:none;">
-        <li><a class="legallink" href="#privacy">Privacy Policy</a></li>
-        <li><a class="legallink" href="#terms">Terms of Service</a></li>
-    </ul>
-    <div id="legalblock" style="display:none;">
-        <div id="legal-header">
-            
-        </div><hr>
-        <div id="legal-content">
-            
-        </div>
-    </div>
+<div id="content">    
+<div id="legalblock" style="display:none;">
+    <div id="legal-header"></div><hr>
+    <div id="legal-content"></div>
+</div>
