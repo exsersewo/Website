@@ -44,6 +44,13 @@
                 "aliases":null,
                 "level":1,
                 "args":[{"name":"user", "required":true},{"name":"amount","required":true}]
+            },
+            {
+                "name":"heal",
+                "description":"Did you run out of health? Here's the healing station.",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"hp", "required":true},{"name":"user","required":false}]
             }
         ]
     },
@@ -199,7 +206,7 @@
             },
             {
                 "name":"setjrole",
-                "description":"Need to give someone a role after joining?",
+                "description":"Need to give someone a role after joining? (no-role clears current one)",
                 "aliases":null,
                 "level":2,
                 "args":[{"name":"role", "required":false}]
@@ -309,22 +316,8 @@
                 "args":null
             },
             {
-                "name":"lewdneko",
-                "description":"I guess these aren't kittens, for legal reasons",
-                "aliases":null,
-                "level":1,
-                "args":null
-            },
-            {
                 "name":"kitsune",
                 "description":"Wolf-girls 0w0",
-                "aliases":null,
-                "level":1,
-                "args":null
-            },
-            {
-                "name":"lewdkitsune",
-                "description":"Kitsunes...... but lewd",
                 "aliases":null,
                 "level":1,
                 "args":null
@@ -428,6 +421,13 @@
                 "args":[{"name":"id", "required":true}]
             },
             {
+                "name":"emoji",
+                "description":"Turns text into bigmoji",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"message", "required":true}]
+            },
+            {
                 "name":"xkcd",
                 "description":"\"A webcomic of romance, sarcasm, math, and language.\"",
                 "aliases":null,
@@ -496,6 +496,13 @@
                 "aliases":null,
                 "level":1,
                 "args":[{"name":"amount", "required":true},{"name":"user","required":false}]
+            },
+            {
+                "name":"safebooru",
+                "description":"Gets an image/post from Safebooru",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"tags", "required":true}]
             }
         ]
     },
@@ -524,14 +531,14 @@
                 "args":null
             },
             {
-                "name":"server emojis",
+                "name":"server-emojis",
                 "description":"Gets the servers emojis",
                 "aliases":null,
                 "level":1,
                 "args":null
             },
             {
-                "name":"server roles",
+                "name":"server-roles",
                 "description":"Gets the servers roles",
                 "aliases":null,
                 "level":1,
@@ -545,7 +552,7 @@
                 "args":null
             },
             {
-                "name":"id guild",
+                "name":"id-guild",
                 "description":"Gets the guild ID",
                 "aliases":null,
                 "level":1,
@@ -566,7 +573,7 @@
                 "args":[{"name":"channel", "required":true}]
             },
             {
-                "name":"serverinvite",
+                "name":"support",
                 "description":"Invite to the support guild",
                 "aliases":null,
                 "level":1,
@@ -666,19 +673,81 @@
         ]
     },
     {
+        "module":"lewd",
+        "commands":
+        [
+            {
+                "name":"lewdneko",
+                "description":"I guess these aren't kittens, for legal reasons",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"lewdkitsune",
+                "description":"Kitsunes...... but lewd",
+                "aliases":null,
+                "level":1,
+                "args":null
+            },
+            {
+                "name":"danbooru",
+                "description":"Gets an image/post from Danbooru",
+                "aliases":["dan"],
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            },
+            {
+                "name":"gelbooru",
+                "description":"Gets an image/post from Gelbooru",
+                "aliases":["gel"],
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            },
+            {
+                "name":"rule34",
+                "description":"Gets an image/post from rule34",
+                "aliases":["r34"],
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            },
+            {
+                "name":"e621",
+                "description":"Gets an image/post from e621",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            },
+            {
+                "name":"konachan",
+                "description":"Gets an image/post from Konachan",
+                "aliases":["kona","kc"],
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            },
+            {
+                "name":"yandere",
+                "description":"Gets an image/post from Yandere",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            },
+            {
+                "name":"real",
+                "description":"Gets an image/post from realbooru",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"tags","required":true}]
+            }
+        ]
+    },
+    {
         "module":"owner",
         "commands":
         [
             {
                 "name":"stop",
                 "description":"Forcibly stops the bot",
-                "aliases":null,
-                "level":5,
-                "args":null
-            },
-            {
-                "name":"populate",
-                "description":"Sometimes the data needs repopulating",
                 "aliases":null,
                 "level":5,
                 "args":null
@@ -703,6 +772,20 @@
                 "aliases":null,
                 "level":5,
                 "args":null
+            },
+            {
+                "name":"setstream",
+                "description":"Sets it to a stream",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"streamer", "required":true},{"name":"title", "required":true}]
+            },
+            {
+                "name":"setactivity",
+                "description":"Sets activity",
+                "aliases":null,
+                "level":5,
+                "args":[{"name":"type", "required":true},{"name":"status","required":true}]
             },
             {
                 "name":"dumpshards",
@@ -754,20 +837,6 @@
                 "args":[{"name":"id", "required":true}]
             },
             {
-                "name":"syncguilds",
-                "description":"Resyncs the guild with the database",
-                "aliases":null,
-                "level":5,
-                "args":null
-            },
-            {
-                "name":"rebuildguilds",
-                "description":"Sometimes the bot needs to rebuild the guilds",
-                "aliases":null,
-                "level":5,
-                "args":null
-            },
-            {
                 "name":"eval",
                 "description":"Evaluates c# code",
                 "aliases":null,
@@ -780,26 +849,13 @@
                 "aliases":null,
                 "level":5,
                 "args":null
-            }
-        ]
-    },
-    {
-        "module":"pokemon",
-        "commands":
-        [
-            {
-                "name":"pokemon",
-                "description":"Gets pokemon information by name",
-                "aliases":null,
-                "level":1,
-                "args":[{"name":"name", "required":true},{"name":"group", "required":false}]
             },
             {
-                "name":"pokemon",
-                "description":"Gets pokemon information by id",
+                "name":"rebuildguilds",
+                "description":"Sometimes the bot needs to rebuild the guilds",
                 "aliases":null,
-                "level":1,
-                "args":[{"name":"id", "required":true},{"name":"group", "required":false}]
+                "level":5,
+                "args":null
             }
         ]
     },
@@ -897,6 +953,20 @@
                 "aliases":null,
                 "level":1,
                 "args":[{"name":"subreddit", "required":true},{"name":"amount", "required":false}]
+            },
+            {
+                "name":"pokemon",
+                "description":"Gets pokemon information by name",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"name", "required":true},{"name":"group", "required":false}]
+            },
+            {
+                "name":"pokemon",
+                "description":"Gets pokemon information by id",
+                "aliases":null,
+                "level":1,
+                "args":[{"name":"id", "required":true},{"name":"group", "required":false}]
             }
         ]
     },

@@ -3,7 +3,8 @@
     <div id="legal-content"></div>
 </div>
 <style type="text/css">
-#navbar{z-index:-1 !important;}
+#navbar{z-index:0 !important;}
+#fader{z-index:1;}
 #footer{display:none;}
 </style>
 <script type="text/javascript">
