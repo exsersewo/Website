@@ -2,11 +2,26 @@
 <!DOCTYPE HTML><html lang="en">
 <?php    
     $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".(isset($page) ? '/'.$page : '')."$_SERVER[REQUEST_URI]";
+    $pagetitle = "";
+
+    if($page == "home")
+    {
+        $pagetitle = "Skuld - Home";
+    }
+    if($page == "commands")
+    {
+        $pagetitle = "Skuld - Commands";
+    }
+    if($page == "privacy")
+    {
+        $pagetitle = "Skuld - Legal";
+    }
+
     $sitename = "Skuld - Discord Bot";
     $title = "Skuld";
     $shortdesc = "Skuld is a Discord Bot aiming to make Discord Servers fun and active.";
     $img = "https://skuld.systemexit.co.uk/content/img/skuld.png";    
-echo "<head><title>".$pagetitle."</title>
+    echo "<head><title>".$pagetitle."</title>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"static/css/head.css\">
 <meta name=\"theme-color\" content=\"#d9bbf9\">
 <meta name=\"msapplication-navbutton-color\" content=\"#d9bbf9\">
@@ -30,10 +45,7 @@ echo "<head><title>".$pagetitle."</title>
 <meta http-equiv=\"Cache-control\" content=\"public\">
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 </head>";
-?>
-<?php
-    $GIF = $_GET['gifs'];
-echo "<body><script type=\"text/javascript\" src=\"static/js/jquery-3.3.1.min-w-jqui-1.12.1.min.js\"></script>
+    echo "<body><script type=\"text/javascript\" src=\"static/js/jquery-3.3.1.min-w-jqui-1.12.1.min.js\"></script>
 <style type=\"text/css\">
 body{margin:0;padding:0;font-family:Arial, Helvetica, sans-serif;}
 #fader{margin:0;padding:0;width:100%;height:105%;display:none;background-color:black;z-index:0;}
@@ -42,30 +54,34 @@ body{margin:0;padding:0;font-family:Arial, Helvetica, sans-serif;}
 #content{overflow:hidden;}
 .strikethrough{text-decoration:line-through;}
 </style><div id=\"fader\"></div>";
-if($page!="gif")
-{
-    include 'templates/header.php';
-}
-if($page == "commands")
-{
-    include 'templates/commands.php';include 'templates/footer.php';
-}
-if ($page == "home")
-{
-    include 'templates/home.php';include 'templates/footer.php';
-}
-if ($page == "privacy")
-{
-    include 'templates/privacy.php';include 'templates/footer.php';
-}
-if ($page == "gif")
-{
-    ob_end_clean();include 'templates/gif.php';
-    echo '<script type="text/javascript" src="static/js/jquery-3.3.1.min-w-jqui-1.12.1.min.js"></script>';
-}
-else
-{
-    include 'templates/404.php';
-}
+    if($page != "gif")
+    {
+        include 'templates/header.php';
+        switch($page)
+        {
+        case "home":
+            include 'templates/home.php';
+            break;
+
+        case "commands":
+            include 'templates/commands.php';
+            break;
+        case "privacy":
+            include 'templates/privacy.php';
+            break;
+
+        default:
+            include 'templates/404.php';
+            break;
+        }
+
+        include 'templates/footer.php';
+        return;
+    }
+    else if ($page == "gif")
+    {
+        ob_end_clean();include 'templates/gif.php';
+        echo '<script type="text/javascript" src="static/js/jquery-3.3.1.min-w-jqui-1.12.1.min.js"></script>';
+    }
 ?>
 </html>
