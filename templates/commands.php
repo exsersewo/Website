@@ -17,7 +17,6 @@
 #commandtable tr:nth-child(even){background: #CCC}
 #commandtable tr:nth-child(odd){background: #FFF}
 .last-row{height:22px;}
-#footer{display:inline-block;position:sticky;}
 @media screen and (max-width: 1280px)
 {
     #commandtable{width:100%;left:0;right:0;}

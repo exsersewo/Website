@@ -22,7 +22,8 @@
 #backwrap{-webkit-filter:blur(5px);-moz-filter:blur(5px);-o-filter:blur(5px);-ms-filter:blur(5px);filter:blur(5px);position:fixed;padding:0;margin:0;top:0;overflow:hidden;z-index:-1;}
 #fader{position:fixed;}
 .legallink{height:50px;}
-#footer{margin:0 auto;width:100%;height:20px;display:block;color:white;background-color:rgba(0,0,0,0.8);position:fixed;bottom:0;z-index:10;padding-top:5px;padding-bottom:5px;}
+#content{margin-bottom:20px;}
+#footer{margin:0 auto;width:95%;height:20px;display:block;color:white;background-color:rgba(0,0,0,0.5);position:relative;bottom:0;z-index:10;padding-top:5px;padding-bottom:5px;bottom:0;margin-top:auto;}
 #footer span{padding-left:5px;display:inline;}
 #footer span a:visited{color:white;}
 #legalstuff{margin:0 auto;padding:0;display:block;position:relative;top:-20px;width:220px;right:0;font-size:15px;}

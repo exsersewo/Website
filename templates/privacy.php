@@ -22,7 +22,7 @@ function LoadContent()
         $.get('static/legal/terms.html',function(response){$("#legal-content").html(response);});
     }
     else{
-        window.history.back();
+        window.location = "<?php echo isset($_SERVER['HTTPS']) ? "https" : "http"; echo "://$_SERVER[HTTP_HOST]/home"; ?>";
     }
 }
 window.onload = LoadContent();

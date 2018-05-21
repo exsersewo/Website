@@ -5,7 +5,7 @@
 </div>
 <script type="text/javascript">
 //
-$('#fader').on('click',function(){window.history.back();});
+$('#fader').on('click',function(){window.location = "<?php echo isset($_SERVER['HTTPS']) ? "https" : "http"; echo "://$_SERVER[HTTP_HOST]/home"; ?>";});
 //
 $.get('https://nekos.life/api/v2/cat',function(response){$("#nya").text(response.cat);});
 //
