@@ -1,0 +1,14 @@
+.section
+{
+    display:block;
+    height:auto !important;
+    margin-top:0 !important;
+}
+.section:first-child
+{
+    padding-top: 15vh !important;
+}
+.section:nth-child(2)
+{
+    height:auto !important;
+}

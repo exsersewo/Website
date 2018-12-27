@@ -1,5 +1,10 @@
 <IfModule mod_deflate.c>
   RedirectMatch 404 /\.git
+  RedirectMatch 404 /\LICENSE
+  RedirectMatch 404 /\README.md
+  RedirectMatch 404 /\composer.lock
+  RedirectMatch 404 /\composer.json
+  RedirectMatch 404 /\vendor
   # Compress HTML, CSS, JavaScript, Text, XML and fonts
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/rss+xml

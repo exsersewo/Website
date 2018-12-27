@@ -1,0 +1,95 @@
+{
+	"Developers":
+	[
+		{
+			"Name": "exsersewo",
+			"Tagline": "I don't know what I am doing",
+			"Role": "Lead Developer",
+			"ImageURL": "/img/avatars/160256824099078144.png",
+			"Links":
+			[
+				{
+					"Platform":"Website",
+					"URL":"https://systemexit.co.uk"
+				},
+				{
+					"Platform":"Github",
+					"URL":"https://github.com/exsersewo"
+				},
+				{
+					"Platform":"Twitter",
+					"URL":"https://twitter.com/exsersewo"
+				},
+				{
+					"Platform":"Twitch",
+					"URL":"https://twitch.tv/exsersewo"
+				}
+			]
+		}
+	],
+	"Staff":
+	[
+		{
+			"Name": "Lan",
+			"Tagline": "Anything is possible with enough spirit shards",
+			"Role": "Administrator",
+			"ImageURL":"/img/avatars/242040333309837327.png",
+			"Links":
+			[
+				{
+					"Platform":"Youtube",
+					"URL":"https://www.youtube.com/channel/UCQjHem1aBBCNAlRPldElXaA"
+				}
+			]
+		},
+		{
+			"Name": "JustBeALlama",
+			"Tagline": "Masturbates to nekos",
+			"Role": "Moderator",
+			"ImageURL":"/img/avatars/138709870206648320.png",
+			"Links":
+			[
+				{
+					"Platform":"Mixer",
+					"URL":"https://mixer.com/justbeallama"
+				},
+				{
+					"Platform":"Twitter",
+					"URL":"https://twitter.com/JustBeALlama"
+				}
+			]
+		},
+		{
+			"Name": "Lynchye",
+			"Tagline": "GGWP",
+			"Role": "Moderator",
+			"ImageURL":"/img/avatars/162971304008482816.png",
+			"Links":
+			[
+				{
+					"Platform":"Twitch",
+					"URL":"https://www.twitch.tv/lynchye"
+				},
+				{
+					"Platform":"Twitter",
+					"URL":"https://twitter.com/Lynchye"
+				}
+			]
+		}
+	],
+	"Contributors":
+	[
+		{
+			"Name": "HeyOPC",
+			"Tagline": "An art boye",
+			"ImageURL":"/img/avatars/272898228356120576.png",
+			"Links":
+			[
+				{
+					"Platform":"Twitter",
+					"URL":"https://twitter.com/heyopc"
+				}
+			]
+		}
+	]
+}

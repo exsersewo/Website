@@ -1,0 +1,44 @@
+table tr:first-child
+{
+    background-color:rgba(0,0,0,0.8) !important;
+}
+table tr:nth-child(even)
+{
+    background-color:rgba(0,0,0,0.4);
+}
+table tr:nth-child(odd)
+{
+    background-color:rgba(0,0,0,0.6);
+}
+table tr td
+{
+    padding:5px;
+    height:25px;
+}
+table tr
+{
+    border:0;
+    padding:5px;
+    height:25px;
+}
+table
+{
+    border:none;
+    text-align:center;
+}
+.section:first-child
+{
+    margin-top:15vh !important;
+}
+.section
+{
+    display:block;
+    height:auto;
+}
+@media screen and (max-width: 800px)
+{
+    .hideable
+    {
+        display:none;
+    }
+}

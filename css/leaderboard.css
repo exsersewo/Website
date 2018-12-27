@@ -1,0 +1,108 @@
+.user-entry
+{
+    width:80vw;
+    height:150px;
+    display:block;
+    margin:25px auto;
+    background-color:#33333393;
+}
+.user-entry:first-child
+{
+    background-color:#e5e4e293;
+}
+.user-entry:nth-child(2)
+{
+    background-color:#d9ebf493;
+}
+.user-entry:nth-child(3)
+{
+    background-color:#da9e3b93;
+}
+.user-entry:nth-child(4)
+{
+    background-color:#98989893;
+}
+.user-entry:nth-child(5)
+{
+    background-color: #ae744193;
+}
+.user-wrapper
+{
+    overflow:hidden;
+    margin:25px;
+    height:100%;
+}
+.useravatar
+{
+    width:96px;
+    height:96px;
+    border-radius:5em;
+    -moz-border-radius:5em;
+    -webkit-border-radius:5em;
+    margin-top:-75px;
+    margin-left:70px;
+    display:block;
+}
+.rank
+{
+    margin-right:10px;
+    display:block;
+    width:50px;
+    height:50px;
+    font-size:5vh;
+    text-align:center;
+    margin-top:50px;
+}
+.username
+{
+    font-size:5vh;
+    display:block;
+    margin-left: 181px;
+    margin-top:-75px;
+}
+.user-value
+{
+    text-align:right;
+    float:right;
+    margin-top:-35px;
+    display:block;
+}
+@media screen and (max-width: 800px)
+{
+    .user-entry
+    {
+        height:100px;
+        padding:0;
+        width:90vw;
+    }
+    .user-wrapper
+    {
+        margin:5px;
+    }
+    .useravatar
+    {
+        width: 64px;
+        height:64px;
+        margin-top:-50px;
+        margin-left:35px;
+    }
+    .rank
+    {
+        width:25px;
+        height:25px;
+        font-size:2vh;
+        margin-top:40px;
+        margin-left:0px;
+    }
+    .username
+    {
+        margin-top:-55px;
+        font-size:2vh;
+        margin-left:109px;
+    }
+    .user-value
+    {
+        margin-top:25px;
+        font-size:2vh;
+    }
+}
