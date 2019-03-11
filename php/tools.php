@@ -41,7 +41,7 @@ function getBotOnlineStatus($status)
 }
 function getSocialMediaLink($platform, $url)
 {
-    $ret = '<a href="'.$url.'">';
+    $ret = '<a href="'.$url.'" target="_blank">';
 
     switch($platform)
     {

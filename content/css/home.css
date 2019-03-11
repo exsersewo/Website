@@ -1,0 +1,91 @@
+.landing
+{
+    display: inline-block;
+    width: 100%;
+    height:calc(100%-32px);
+    padding:18vh 0;
+}
+.bot-info-sect
+{
+    margin:0 15vw;
+    margin-top:20vh;
+    display:block;
+}
+.landing-img
+{
+    display:block;
+    width:256px;
+    height:256px;
+    border-radius:25em;
+    padding:0;
+    margin:0 auto;
+}
+.bot-name-sect h2
+{
+    font-size:10vh;
+}
+.bot-name-sect span
+{
+    display:block !important;
+}
+.bot-name-sect h2,
+.bot-name-sect span,
+.bot-name-sect a
+{
+    display:inline-block;
+    text-decoration:none;
+    line-height:64px;
+    margin:0;
+    padding:0;
+}
+.feature
+{
+    display:inline-block;
+    width:calc(100%/3.025);
+    height:32vh;
+    text-align:center;
+    overflow:hidden;
+    margin:0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+.feature-img
+{
+    font-size:20vh;
+}
+.feature .feature-name
+{
+    font-size:2.5vh;
+}
+.feature .feature-desc
+{
+    font-size:2vh;
+}
+.feature .feature-desc a
+{
+    color:inherit;
+}
+.invite
+{
+    text-align:center;
+    font-family: 'Roboto', sans-serif;
+    font-size:4vh;
+}
+.invite a
+{
+    margin-top:15px;
+    padding:15px;
+    width:250px;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+.invite a:hover
+{
+    -webkit-box-shadow: 0px 0px 5px 3px var(--lteal);
+    -moz-box-shadow: 0px 0px 5px 3px var(--lteal);
+    box-shadow: 0px 0px 5px 3px var(--lteal);
+    -webkit-box-shadow: 0px 0px 5px 3px #b2dfdb;
+    -moz-box-shadow: 0px 0px 5px 3px #b2dfdb;
+    box-shadow: 0px 0px 5px 3px #b2dfdb;
+}

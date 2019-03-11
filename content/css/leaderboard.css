@@ -1,0 +1,173 @@
+@keyframes placeHolderShimmer{
+    0%{
+        background-color: #6a6a6a;
+    }
+    50%{
+        background-color: #5a5a5a;
+    }
+    100%{
+        background-color: #6a6a6a;
+    }
+}
+
+body
+{
+    padding-top:64px;
+}
+main
+{
+    margin-top:64px;
+}
+.section
+{
+    padding-top:0 !important;
+}
+.user-entry
+{
+    width: 50vw;
+    height: 150px;
+    display: block;
+    margin: 25px auto;
+    overflow: hidden;
+    background-color: #33333393;
+}
+.loadingBox
+{
+    width: 50vw;
+    height: 150px;
+    display: block;
+    margin: 25px auto;
+    line-height: 150px;
+    background-color:#33333393;
+}
+.features .user-entry:nth-child(1)
+{
+    background-color:#e5e4e293;
+}
+.features .user-entry:nth-child(2)
+{
+    background-color:#d9ebf493;
+}
+.features .user-entry:nth-child(3)
+{
+    background-color:#da9e3b93;
+}
+.features .user-entry:nth-child(4)
+{
+    background-color:#98989893;
+}
+.features .user-entry:nth-child(5)
+{
+    background-color: #ae744193;
+}
+.userinfo.firstUser .useravatar::before
+{
+    content:url('/content/img/crown.png');
+    transform:rotate(-58deg);
+    width:32px;
+    height:32px;
+    padding:0;
+}
+.useravatar
+{
+    width: 96px;
+    height: 96px;
+    border-radius: 5em;
+    -moz-border-radius: 5em;
+    -webkit-border-radius: 5em;
+    display: block;
+    margin-top: 30px;
+}
+.useravatar.loading
+{
+    margin-top:25px;
+}
+.username.loading
+{
+    width: 80%;
+    height: 25px;
+    margin-top: -65px;
+}
+.user-value.loading
+{
+    width: 80%;
+    height: 25px;
+    margin-top: 25px;
+    margin-left: 115px;
+}
+.loading
+{
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    -webkit-box-shadow: 0px 0px 2px 0.1px var(--light);
+    -moz-box-shadow: 0px 0px 2px 0.1px var(--light);
+    box-shadow: 0px 0px 2px 0.1px var(--light);
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+.rank
+{
+    display: block;
+    width: 75px;
+    font-size: 5vh;
+    text-align: center;
+    height: 100%;
+    line-height: 150px;
+}
+.username
+{
+    font-size: 4vh;
+    display: block;
+    width: auto;
+    max-width: 69%;
+    margin-top: -126px;
+    line-height: 150px;
+    margin-left: 115px;
+    height: 100%;
+}
+.user-value
+{
+    text-align: right;
+    display: block;
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 3vh;
+    margin-top: -125px;
+    line-height: 270px;
+    height: 100%;
+}
+.user-level
+{
+    text-align:right;
+    display:block;
+    margin-right:0;
+    margin-left:auto;
+    margin-top:-45px;
+    font-size:3vh;
+}
+.user-info
+{
+    display: block;
+    height: 125px;
+    width: 91%;
+    margin-left: 80px;
+    margin-top: -150px;
+}
+progress
+{
+    margin-right:15px;
+    margin-top:20px;
+}
+@media screen and (max-width: 1300px)
+{
+
+
+}
+@media screen and (max-width: 800px)
+{
+
+}

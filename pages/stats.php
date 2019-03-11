@@ -1,6 +1,8 @@
 <?php
-    include __DIR__.'/../php/bot.php';
-    include __DIR__.'/../php/tools.php';
+    include $toolsRoot.'/bot.php';
+    include $toolsRoot.'/tools.php';
+
+    $pageName = "Stats - Skuld";
 
     $resp = null;
     $data = null;
@@ -21,37 +23,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Stats - Skuld</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link  rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/css/stats.css">
-    <meta name="theme-color" content="#00ad4e">
-    <meta name="msapplication-navbutton-color" content="#00ad4e">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" sizes="192x192" href="/img/Skuld.png">
-    <meta property="type" content="website" />
-    <meta name="url" content="//skuld.systemexit.co.uk/" />
-    <meta name="title" content="Stats - Skuld" />
-    <meta name="description" content="Skuld is a Discord Bot aiming to make Discord Servers fun and active." />
-    <meta name="site_name" content="Skuld the Discord Bot" />
-    <meta name="image" content="/img/Skuld.png" />
-    <meta name="locale" content="en-GB" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="//skuld.systemexit.co.uk/" />
-    <meta property="og:title" content="Stats - Skuld" />
-    <meta property="og:description" content="Skuld is a Discord Bot aiming to make Discord Servers fun and active." />
-    <meta property="og:site_name" content="Skuld the Discord Bot" />
-    <meta property="og:image" content="/img/Skuld.png" />
-    <meta property="og:locale" content="en-GB" />
-    <meta http-equiv="Cache-control" content="public">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php include $templateRoot.'/head.php';?>
+    <link rel="stylesheet" type="text/css" href="/content/css/stats.css">
 </head>
 <body>
-
-<?php include $_SERVER["DOCUMENT_ROOT"].'/base/nav.html';?>
-
+<div class="backgroundHolder"></div>
+<?php include $templateRoot.'/nav.php';?>
 <main>
     <div class="section">
         <h2 class="center">Stats</h2>
@@ -96,13 +73,7 @@
         </div>
     </div>
 </main>
-
-<?php include $_SERVER["DOCUMENT_ROOT"].'/base/footer.html';?>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/countup.js/1.9.3/countUp.min.js"></script>
-<script src="/js/menu.js"></script>
-<script src="/js/xmas.js"></script>
 <script>
 var options = {
   useEasing: true,
@@ -115,22 +86,18 @@ var guilds = <?=$data->Guilds??'"'.$na.'"'?>;
 
 if(users != "N/A")
 {
-    var a = new CountUp('users', 0, users, 0, 2.5, options);
-    a.start();
+    new CountUp('users', 0, users, 0, 2.5, options).start();
 }
 else
 {
-    $('#users').text('N/A');
+    document.getElementById('users').innerText = 'N/A';
 }
 if(guilds != "N/A")
 {
-    var a = new CountUp('guilds', 0, guilds, 0, 2.5, options);
-    a.start();
+    new CountUp('guilds', 0, guilds, 0, 2.5, options).start();
 }
 else
 {
-    $('#guilds').text('N/A');
+    document.getElementById('guilds').innerText = 'N/A';
 }
 </script>
-</body>
-</html>

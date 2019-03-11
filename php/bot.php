@@ -4,7 +4,7 @@
     use WebSocket\Client;
 
     $wscli;
-    $usr;
+    $botUsr;
 
     try
     {
@@ -12,7 +12,7 @@
         if($wscli != null)
         {
             $wscli->send("user:270047199184945152");
-            $usr = json_decode($wscli->receive());
+            $botUsr = json_decode($wscli->receive());
         }
         else
         {

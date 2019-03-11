@@ -1,5 +1,20 @@
 <?php
-    $page;
+    $docRoot = $_SERVER["DOCUMENT_ROOT"];
+    $configRoot = $docRoot.'/config';
+    $toolsRoot = $docRoot.'/php';
+    $pagesRoot = $docRoot.'/pages';
+    $errorRoot = $docRoot.'/errors';
+    $templateRoot = $docRoot.'/templates';
+    $legalRoot = $docRoot.'/templates/legal';
+
+    require $configRoot.'/discord.php';
+    if (session_status() == PHP_SESSION_NONE)
+    {
+        session_start();
+    }
+    require $toolsRoot.'/user.php';
+
+    $page = "";
 
     if(isset($_GET['page']))
     {
@@ -7,44 +22,27 @@
     }
     else
     {
-        $page = "home";
+        header('Location: /home');
     }
 
-    if(strcasecmp($page, "home") == 0)
+    $page = strtolower($page);
+
+    if($page == "dashboard" || $page == "profile")
     {
-        include $_SERVER["DOCUMENT_ROOT"].'/pages/home.php';
-        die();
-    }
-    if(strcasecmp($page, "commands") == 0)
-    {
-        include $_SERVER["DOCUMENT_ROOT"].'/pages/commands.php';
-        die();
-    }
-    if(strcasecmp($page, "dash") == 0 || strcasecmp($page, "dashboard") == 0)
-    {
-        header('Location: ./dashboard/');
-    }
-    if(strcasecmp($page, "stats") == 0)
-    {
-        include $_SERVER["DOCUMENT_ROOT"].'/pages/stats.php';
-        die();
-    }
-    if(strcasecmp($page, "credits") == 0)
-    {
-        include $_SERVER["DOCUMENT_ROOT"].'/pages/credits.php';
-        die();
-    }
-    if(strcasecmp($page, "legal") == 0)
-    {
-        include $_SERVER["DOCUMENT_ROOT"].'/pages/legal.php';
-        die();
-    }
-    if(strcasecmp($page, "leaderboard") == 0)
-    {
-        include $_SERVER["DOCUMENT_ROOT"].'/pages/leaderboard.php';
-        die();
+        header('Location: /'.$page);
     }
 
-    include $_SERVER["DOCUMENT_ROOT"].'/pages/404.php';
-    die();
+    $pageFile = $pagesRoot.'/'.$page.'.php';
+
+    if(is_file($pageFile))
+    {
+        include $pageFile;
+    }
+    else
+    {
+        include $errorRoot.'/404.php';
+    }
+
+    include $templateRoot.'/footer.php';
+    echo '</body></html>';
 ?>

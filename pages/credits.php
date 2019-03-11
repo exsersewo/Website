@@ -1,110 +1,67 @@
+<?php
+$pageName = "Credits - Skuld";
+include $toolsRoot.'/tools.php';
+$json = json_decode(file_get_contents($docRoot.'/content/json/credits.json'));
+function getSection($jsonSection)
+{
+    $sectionBody = '';
+    foreach($jsonSection as $entry)
+    {
+        $sectionBody.='<li class="feature">';
+        $sectionBody.='<img class="feature-img" src="'.$entry->ImageURL.'"/>';
+        $sectionBody.='<div class="feature-name" style="padding-top:25px;">'.$entry->Name.'</div>';
+        $sectionBody.='<div class="feature-desc"><p>'.$entry->Tagline.'</p>';
+
+        if(isset($entry->Role))
+        {
+            $sectionBody.='<p>'.$entry->Role.'</p>';
+        }
+
+        $sectionBody.='</div>';
+
+        $sectionBody.='<div class="feature-links">';
+        foreach($entry->Links as $link)
+        {
+            $sectionBody.=getSocialMediaLink($link->Platform, $link->URL);
+            $sectionBody.=' ';
+        }
+        $sectionBody.='</div>';
+        $sectionBody.='</li>';
+    }
+    return $sectionBody;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Credits - Skuld</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link  rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/css/credits.css">
-    <meta name="theme-color" content="#00ad4e">
-    <meta name="msapplication-navbutton-color" content="#00ad4e">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" sizes="192x192" href="/img/Skuld.png">
-    <meta property="type" content="website" />
-    <meta name="url" content="//skuld.systemexit.co.uk/" />
-    <meta name="title" content="Credits - Skuld" />
-    <meta name="description" content="Skuld is a Discord Bot aiming to make Discord Servers fun and active." />
-    <meta name="site_name" content="Skuld the Discord Bot" />
-    <meta name="image" content="/img/Skuld.png" />
-    <meta name="locale" content="en-GB" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="//skuld.systemexit.co.uk/" />
-    <meta property="og:title" content="Credits - Skuld" />
-    <meta property="og:description" content="Skuld is a Discord Bot aiming to make Discord Servers fun and active." />
-    <meta property="og:site_name" content="Skuld the Discord Bot" />
-    <meta property="og:image" content="/img/Skuld.png" />
-    <meta property="og:locale" content="en-GB" />
-    <meta http-equiv="Cache-control" content="public">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php include $templateRoot.'/head.php';?>
+<link rel="stylesheet" type="text/css" href="/content/css/credits.css"/>
 </head>
 <body>
-
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/base/nav.html';
-    include $_SERVER["DOCUMENT_ROOT"].'/php/tools.php';
-    $json = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"].'/json/credits.json'));
+    include $templateRoot.'/nav.php';
 ?>
-
+<div class="backgroundHolder"></div>
 <main>
     <div class="section">
         <h2 class="center">Credits</h2>
         <h3 class="center">Developers</h3>
-        <div class="features">
-            <?php
-                foreach($json->Developers as $entry)
-                {
-                    echo '<div class="feature">';
-                    echo '<img class="feature-img" src="'.$entry->ImageURL.'"/>';
-                    echo '<div class="feature-name">'.$entry->Name.'</div>';
-                    echo '<div class="feature-desc">'.$entry->Tagline.'</div>';
-                    echo '<div class="feature-links">';
-                    foreach($entry->Links as $link)
-                    {
-                        echo getSocialMediaLink($link->Platform, $link->URL);
-                        echo ' ';
-                    }
-                    echo '</div>';
-
-                    echo '</div>';
-                }
-            ?>
-        </div>
+        <ul class="features">
+            <?=getSection($json->Developers);?>
+        </ul>
     </div>
     <div class="section">
         <h3 class="center">Contributors</h3>
-        <div class="features">
-            <?php
-                foreach($json->Contributors as $entry)
-                {
-                    echo '<div class="feature">';
-                    echo '<img class="feature-img" src="'.$entry->ImageURL.'"/>';
-                    echo '<div class="feature-name">'.$entry->Name.'</div>';
-                    echo '<div class="feature-desc">'.$entry->Tagline.'</div>';
-                    echo '<div class="feature-links">';
-                    foreach($entry->Links as $link)
-                    {
-                        echo getSocialMediaLink($link->Platform, $link->URL);
-                        echo ' ';
-                    }
-                    echo '</div>';
-
-                    echo '</div>';
-                }
-            ?>
-        </div>
+        <ul class="features">
+            <?=getSection($json->Contributors);?>
+        </ul>
     </div>
     <div class="section">
         <h3 class="center">Server Staff</h3>
-            <?php
-                foreach($json->Staff as $entry)
-                {
-                    echo '<div class="feature">';
-                    echo '<img class="feature-img" src="'.$entry->ImageURL.'"/>';
-                    echo '<div class="feature-name">'.$entry->Name.'</div>';
-                    echo '<div class="feature-desc"><p>'.$entry->Tagline.'</p><p>'.$entry->Role.'</p></div>';
-                    echo '<div class="feature-links">';
-                    foreach($entry->Links as $link)
-                    {
-                        echo getSocialMediaLink($link->Platform, $link->URL);
-                        echo ' ';
-                    }
-                    echo '</div>';
-
-                    echo '</div>';
-                }
-            ?>
-        </div>
+        <ul class="features">
+            <?=getSection($json->Staff);?>
+        </ul>
     </div>
     <div class="section">
         <h3 class="center">NuGet Packages</h3>
@@ -179,12 +136,3 @@
         </table>
     </div>
 </main>
-
-<?php include $_SERVER["DOCUMENT_ROOT"].'/base/footer.html';?>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/menu.js"></script>
-<script src="/js/xmas.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-</body>
-</html>

@@ -1,15 +1,13 @@
-# skuld-website
-Website for Skuld DiscordBot ( https://github.com/exsersewo/skuld )
+# [SkuldBot.UK](https://SkuldBot.UK)
+The Website for [Skuld](https://github.com/exsersewo/Skuld)
 
-only being hosted here for code versioning lole
+# JavaScript Libraries
+* [JQuery](https://jquery.com/)
+* [JQuery-UI](https://jqueryui.com/)
+* [Anime.JS](http://animejs.com/)
+* [FontAwesome](https://fontawesome.com/)
+* [CountUp.js](https://inorganik.github.io/countUp.js/)
 
-# js libraries used
-* jquery
-* jquery-ui
-* anime.js
-
-# css libraries used
-* none atm lole
-
-# php libraries used
-* none lol
+# PHP Libraries
+* [textalk/websocket](https://github.com/textalk/websocket-php)
+* [team-reflex/oauth2-discord](https://github.com/teamreflex/oauth2-discord)

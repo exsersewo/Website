@@ -1,0 +1,15 @@
+.user-img
+{
+    border-radius:5em;
+    width:128px;
+    height:128px;
+    display:block;
+}
+.content
+{
+    margin-left:250px;
+}
+.dropdownUser
+{
+    height:100%;
+}

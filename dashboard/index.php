@@ -1,44 +1,180 @@
+<?php
+    $docRoot = $_SERVER['DOCUMENT_ROOT'];
+    require $docRoot.'/vendor/autoload.php';
+    require $docRoot.'/config/discord.php';
+    if(session_status() == PHP_SESSION_NONE){session_start();}
+    require $docRoot.'/php/user.php';
+
+    $pageName = "Dashboard - Skuld";
+
+    use WebSocket\Client;
+
+    $canConnectToWebSocket = true;
+    function doesGuildExist($guildID)
+    {
+        global $canConnectToWebSocket;
+        try
+        {
+            if($canConnectToWebSocket == true)
+            {
+                $wscli = new Client("ws://127.0.0.1:37821");
+                $wscli->send('guild:'.$guildID);
+                $gld = json_decode($wscli->receive());
+
+                if($gld->Successful)
+                    return true;
+            }
+
+            return false;
+        }
+        catch (Exception $ex)
+        {
+            $canConnectToWebSocket = false;
+            return false;
+        }
+    }
+    function getHighestPermissionName($guildEntity)
+    {
+        if($guildEntity->owner)
+            return 'Owner';
+
+        $permCode = intval($guildEntity->permissions);
+
+        if($permCode & 0x8 != 0)
+            return 'Server Admin';
+        if($permCode & 0x20 != 0)
+            return 'Server Manager';
+
+        return 'N/A';
+    }
+    function canManageServer($guildEntity)
+    {
+        return $guildEntity->owner || (intval($guildEntity->permissions) & (0x8 | 0x20)) != 0;
+    }
+
+    if($usr == null)
+    {
+        header('Location: ../login');
+    }
+
+    $isGuildSet = isset($_GET['guild']);
+    $guild = null;
+
+    if($isGuildSet)
+    {
+        $gld = filter_input ( INPUT_GET, 'guild', FILTER_VALIDATE_INT, array('options'=>array('min_range' => 1)));
+
+        foreach($usr->guilds as $entry)
+        {
+            if($gld == $entry->id)
+            {
+                $guild = $entry;
+            }
+        }
+
+        if($guild == null)
+        {
+            http_response_code(404);
+            require $_SERVER['DOCUMENT_ROOT'].'/errors/404.php';
+            die();
+        }
+        else
+        {
+            if(!canManageServer($guild))
+            {
+                http_response_code(403);
+                require $_SERVER['DOCUMENT_ROOT'].'/errors/403.php';
+                die();
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dashboard - Skuld</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link  rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../css/stats.css">
-    <meta name="theme-color" content="#00ad4e">
-    <meta name="msapplication-navbutton-color" content="#00ad4e">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" sizes="192x192" href="../img/Skuld.png">
-    <meta property="type" content="website" />
-    <meta name="url" content="//skuld.systemexit.co.uk/" />
-    <meta name="title" content="Dashboard - Skuld" />
-    <meta name="description" content="Skuld is a Discord Bot aiming to make Discord Servers fun and active." />
-    <meta name="site_name" content="Skuld the Discord Bot" />
-    <meta name="image" content="" />
-    <meta name="locale" content="en-GB" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="//skuld.systemexit.co.uk/" />
-    <meta property="og:title" content="Dashboard - Skuld" />
-    <meta property="og:description" content="Skuld is a Discord Bot aiming to make Discord Servers fun and active." />
-    <meta property="og:site_name" content="Skuld the Discord Bot" />
-    <meta property="og:image" content="../img/Skuld.png" />
-    <meta property="og:locale" content="en-GB" />
-    <meta http-equiv="Cache-control" content="public">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php include $docRoot.'/templates/head.php';  ?>
+    <link rel="stylesheet" type="text/css" href="../content/css/dashboard.css">
 </head>
 
 <body>
-<?php include '../base/nav.html'; ?>
+<div class="backgroundHolder" style="background-image:none;"></div>
+<?php include $docRoot.'/templates/nav.php'; ?>
 <main>
     <div class="section">
-        <h2 class="center">Dashboard</h2>
-        <p>The dashboard is currently a work in progress and will be coming eventually.</p>
+        <?php
+            if(!$isGuildSet)
+            {
+                echo '<h1 class="center">'.$usr->username.'<span class="tiny">#'.$usr->discriminator.'</span>\'s Dashboard</h2>
+                <ul id="guildList">';
+
+                $count = 0;
+                $manageableGuilds = array();
+
+                foreach($usr->guilds as $entry)
+                {
+                    if(canManageServer($entry))
+                    {
+                        $manageableGuilds[] = $entry;
+                    }
+                }
+
+                $lastGuild = array_values(array_slice($manageableGuilds, -1))[0];
+                foreach($manageableGuilds as $entry)
+                {
+                    $iconurl = $entry->icon != "" ? 'https://cdn.discordapp.com/icons/'.$entry->id.'/'.$entry->icon.'.png' : 'https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png';
+                    echo '<li class="guildItem">';
+
+                    $link = "";
+
+                    if(doesGuildExist(intval($entry->id)))
+                        $link = '/dashboard/'.$entry->id;
+                    else
+                        $link = 'https://discordapp.com/oauth2/authorize/?permissions=-1&scope=bot&client_id=270047199184945152&guild_id='.$entry->id;
+
+                    echo '<a href="'.$link.'">';
+
+                    echo '<img class="guildItem-ico" src="'.$iconurl.'"/>';
+                    echo '<div class="guildItem-name">'.$entry->name.'</div>';
+                    echo '<div class="guildItem-perms">'.getHighestPermissionName($entry).'</div>';
+                    echo '</a>';
+
+                    echo '</li>';
+                    $count+=1;
+                }
+                if($count == 0)
+                {
+                    echo '<p>You have no guilds that you can manage.</p>';
+                }
+                echo '</ul>';
+            }
+            else
+            {
+                if($guild != null)
+                {
+                    echo '<h3 class="center" style="margin-top:5vh;text-decoration:underline;">'.$guild->name.'</h3>';
+
+                    if(canManageServer($guild))
+                    {
+                    ?>
+                    <div id="leftbar">
+                        <select>
+                            <option>Modules</option>
+                            <option>Features</option>
+                            <option>Custom Commands</option>
+                            <option>Level Rewards</option>
+                            <option>Joinable Roles</option>
+                            <option>Welcome</option>
+                            <option>Leave</option>
+                        </select>
+                    </div>
+                <?php
+                    }
+                }
+            }
+        ?>
     </div>
 </main>
-<!--<?php include '../base/footer.html'; ?>-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/menu.js"></script>
+<?php include $docRoot.'/templates/footer.html'; ?>
 </body>
 </html>

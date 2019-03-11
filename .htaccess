@@ -1,10 +1,10 @@
 <IfModule mod_deflate.c>
-  RedirectMatch 404 /\.git
-  RedirectMatch 404 /\LICENSE
-  RedirectMatch 404 /\README.md
-  RedirectMatch 404 /\composer.lock
-  RedirectMatch 404 /\composer.json
-  RedirectMatch 404 /\vendor
+  RedirectMatch 404 /.git
+  RedirectMatch 404 /LICENSE
+  RedirectMatch 404 /README.md
+  RedirectMatch 404 /composer.lock
+  RedirectMatch 404 /composer.json
+  RedirectMatch 404 /vendor
   # Compress HTML, CSS, JavaScript, Text, XML and fonts
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/rss+xml
@@ -52,8 +52,9 @@ ExpiresDefault "access plus 2 days"
 ## EXPIRES CACHING ##
 
 RewriteEngine on
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^(.*)$ /index.php?page=$1 [QSA,L,NC]
+RewriteRule ^([^/]*)$ /index.php?page=$1 [QSA,L,NC]
+RewriteRule ^([^/]*)/([^/]*)$ /index.php?page=$1&t=$2 [QSA,L,NC,B]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ /index.php?page=$1&t=$2&g=$3 [QSA,L,NC,B]

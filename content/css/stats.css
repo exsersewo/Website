@@ -1,0 +1,63 @@
+.jumbopage
+{
+    display:inline-block;
+    margin:0 auto;
+}
+.section:first-child {
+    padding-top: 5vh !important;
+}
+.stat
+{
+    display:inline-block;
+    width:calc(100%/3.025);
+    height:32vh;
+    text-align:center;
+    overflow:hidden;
+    margin:0 auto;
+}
+.stat-img
+{
+    font-size:20vh;
+}
+.stat .stat-name
+{
+    font-size:2.5vh;
+}
+.stat .stat-desc
+{
+    font-size:2vh;
+}
+.section
+{
+    height:auto;
+}
+
+@media screen and (max-width: 1200px)
+{
+    .stat
+    {
+        width:calc(100%/2.025);
+    }
+}
+@media screen and (max-width: 800px)
+{
+    .section
+    {
+        height:auto;
+    }
+    .section:last-child
+    {
+        padding-bottom:15vh !important;
+    }
+    .stat
+    {
+        display:block;
+        height:auto;
+        width:auto;
+        padding-bottom:15vh;
+    }
+    .stat:last-child
+    {
+        padding-bottom:0;
+    }
+}
