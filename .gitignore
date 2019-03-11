@@ -1,3 +1,4 @@
 .git/
 .vscode/
 includes/dbconfig.php
+config/discord.php
