@@ -1,7 +1,5 @@
 <?php
 $pageName = "Commands - Skuld";
-include $toolsRoot.'/tools.php';
-$json = json_decode(file_get_contents($docRoot.'/content/json/credits.json'));
 ?>
 
 <!DOCTYPE html>
