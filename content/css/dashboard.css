@@ -1,44 +1,118 @@
-.guildList
+#manageOption
+{
+    width:100%;
+}
+#manageOption ul
+{
+    height:100%;
+    display:flex;
+    list-style:none;
+    width:auto;
+    margin:0 auto;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content:space-evenly;
+}
+.dash-item
+{
+    flex-basis:content;
+    width:auto;
+    min-width:150px;
+    height:100px;
+    margin:10px;
+}
+.dash-item select
+{
+    width:100%;
+}
+#guildList
 {
     width:100%;
     height:100%;
-    display:block;
+    display:flex;
     list-style:none;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content:space-evenly;
 }
-
+.guildItem, .guildItem a
+{
+    text-decoration:none;
+    color:var(--light);
+}
 .guildItem
 {
-    display:inline-block;
-    width:calc(100%/6);
-    height:100%;
-    text-align:center;
-    margin-bottom:25px;
+    flex-basis:content;
+    width:278px;
+    height:auto;
+    margin:auto;
+    /*margin-bottom:25px;*/
     overflow:hidden;
     -moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-    /*border:solid*/
-}
-.guildItem-ico
-{
-    width:128px;
-    height:128px;
-    border-radius:5em;
-}
-.guildItem a
-{
-    color:var(--light);
-    text-decoration:none;
-    padding:5px;
-    display:block;
-    height:100%;
+    background-color:#303030;
+    border:solid 2px #484747;
+    /*margin:2px;*/
+    -webkit-box-shadow: 0px 0px 1px 0px rgba(120, 120, 120, 0.75);
+    -moz-box-shadow: 0px 0px 1px 0px rgba(120, 120, 120, 0.75);
+    box-shadow: 0px 0px 1px 0px rgba(120, 120, 120, 0.75);
+    margin:10px 0;
 }
 .guildItem:hover
 {
-    -webkit-box-shadow: 0px 0px 5px 3px var(--lteal);
-    -moz-box-shadow: 0px 0px 5px 3px var(--lteal);
-    box-shadow: 0px 0px 5px 3px var(--lteal);
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(120, 120, 120, 0.75);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(120, 120, 120, 0.75);
+    box-shadow: 0px 0px 5px 2px rgba(120, 120, 120, 0.75);
+    cursor:move;
+    --webkit-appearance:move;
+    --moz-appearance:move;
+}
+.guildItem hr
+{
+    width: 95%;
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #484747;
+    margin: 1em auto;
+    padding: 0; 
+}
+.guildItem-ico
+{
+    width:100%;
+    height:auto;
+    border:none;
+    margin:0;
+    padding:0;
+    border-bottom: 2px solid #484747;
+}
+.guildItem a
+{
+    display:inline-block;
+    margin-left:5px;
+    text-align:center;
+    margin-bottom:10px;
+    font-weight:bolder;
+}
+.guildItem a:hover
+{
+    color:var(--teal);
+    text-decoration:underline;
+    cursor:hand;
+    --webkit-appearance:hand;
+    --moz-appearance:hand;
+}
+.guildItem-name,
+.guildItem-perms
+{
+    font-weight:bold;
+    padding:5px;
+}
+.guildItem-name
+{
+    font-size:1.8vh;
 }
 .section
 {
