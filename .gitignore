@@ -2,3 +2,4 @@
 .vscode/
 includes/dbconfig.php
 config/discord.php
+config/mysql.php
