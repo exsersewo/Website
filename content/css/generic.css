@@ -206,6 +206,7 @@ footer
     margin:0;
     color:white;
     margin-top:5vh;
+    display:block;
 }
 footer a
 {
