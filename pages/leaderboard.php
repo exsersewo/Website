@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/content/css/leaderboard.css">
     <script type="text/javascript">
         const page = '<?=$_GET['t'];?>';
-        const guild = '<?=$_GET['g'] ? $_GET['g'] : '0' ?>';
+        <?=(isset($_GET['g'])) ? 'const guild = \''.$_GET['g'].'\'' : 'const guild = 0'?>;
     </script>
     <script type="text/javascript" src="/content/js/leaderboard.js"></script>
 </head>
