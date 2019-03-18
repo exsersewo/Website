@@ -21,7 +21,7 @@ $pageName = "Commands - Skuld";
             <div id="moduleList" style="display:inline-block;">
                 <input type="checkbox" checked='true' class="moduleCheckBox" onchange='changeModule(this, "all")' id="selectAll"><label for="selectAll">Select All Modules</label>
             </div>
-        </div><br><br>
+        </div><br><input id="search" oninput="search(event)" type="text" placeholder="Type a command name"/><br><br>
         <table id="moduleCommands">
             <tr>
                 <td>Name</td>

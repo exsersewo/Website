@@ -4,12 +4,86 @@
     width:128px;
     height:128px;
     display:block;
+    margin-left:464px;
+    margin-top:-128px;
 }
 .content
 {
-    margin-left:250px;
+    margin:0 auto;
+    margin-top: -100vh;
 }
 .dropdownUser
 {
+    height: 100vh;
+    width: 250px;
+    margin-top:64px;
+    list-style:none;
+}
+.dropdownUser a
+{
+    width:100%;
+    height:25px;
+    text-align:center;
+}
+#infosection,
+#bkgrsection,
+#settsection
+{
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width:min-content;
+    margin:0 auto;
+}
+.section
+{
+    padding-top:5vh !important;
+}
+.microsection
+{
+    background-color: #303030;
+    display:block;
+    margin: 0 auto;
+    position:relative;
+    width:800px;
+    min-height:100px;
+    height:auto;
+    margin-bottom:25px;
+}
+.microsection:last-child
+{
+    margin-bottom:0;
+}
+.microhead
+{
+    position:absolute;
+    background-color:#484747;
+    width:100%;
+    height:75px;
+    top:0;
+    vertical-align: top;
+    text-align:center;
+}
+.microcontent
+{
+    padding-top:85px; 
+    width:100%;
     height:100%;
+    padding-left:15px;
+    padding-right:15px;
+}
+.microcontent p
+{
+    width:100%;
+    height:100%;
+    display:block;
+}
+progress::-moz-progress-bar {backgound:#009688;;}
+progress::-webkit-progress-value {background-color:#009688;;}
+#progress
+{
+    width:100%;
+    height:30px;
+    background:var(--light);
 }

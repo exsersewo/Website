@@ -44,6 +44,42 @@ function getData()
 }
 getData();
 
+function search(event)
+{
+    moduleCommands.innerHTML = '';
+
+    var cmds = [];
+
+    document.querySelectorAll('input:checked').forEach(function(e)
+    {
+        Commands.forEach(function(a)
+        {
+            if(e.id == 'selectAll')
+            {
+                cmds = Commands;
+            }
+            else
+            {
+                if(e.id.substr(4).toUpperCase() == a.Name.toUpperCase())
+                {
+                    cmds.push(a);
+                }
+            }
+        })
+    });
+
+    cmds.forEach(function(e)
+    {
+        e.Commands.forEach(function(g)
+        {
+            if(g.Name.includes(event.srcElement.value))
+            {
+                moduleCommands.innerHTML += '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">'+e.Name+'</span></td><td>'+g.Description+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
+            }
+        });
+    });
+}
+
 function displayModuleNames()
 {
     modListSection = document.getElementById('moduleList');
@@ -117,7 +153,7 @@ function changeModule(sender, module)
                     cmds.push(a);
                 }
             })
-        })
+        });
     }
 
     cmds.forEach(function(e)

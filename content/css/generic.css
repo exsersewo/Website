@@ -46,7 +46,8 @@ body
 }
 .center
 {
-    text-align:center;
+    text-align:center !important;
+    display:block !important;
 }
 nav
 {
@@ -205,7 +206,7 @@ footer
     height:250px;
     margin:0;
     color:white;
-    margin-top:5vh;
+    margin-top:10vh;
     display:block;
 }
 footer a

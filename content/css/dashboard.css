@@ -25,15 +25,28 @@
 {
     width:100%;
 }
+.guildFooter
+{
+    bottom: 0;
+    width: 100%;
+    height:auto;
+    position: absolute;
+}
+.guildDetails
+{
+    position:absolute;
+    width:100%;
+    height:auto;
+}
 #guildList
 {
-    width:100%;
-    height:100%;
-    display:flex;
-    list-style:none;
-    flex-wrap:wrap;
-    flex-direction:row;
-    justify-content:space-evenly;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 .guildItem, .guildItem a
 {
@@ -42,23 +55,21 @@
 }
 .guildItem
 {
-    flex-basis:content;
-    width:278px;
-    height:auto;
-    margin:auto;
-    /*margin-bottom:25px;*/
-    overflow:hidden;
+    position:relative;
+    flex-basis: content;
+    width: 278px;
+    height: 450px;
+    margin: 10px;
+    overflow: hidden;
     -moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-    background-color:#303030;
-    border:solid 2px #484747;
-    /*margin:2px;*/
+    background-color: #303030;
+    border: solid 2px #484747;
     -webkit-box-shadow: 0px 0px 1px 0px rgba(120, 120, 120, 0.75);
     -moz-box-shadow: 0px 0px 1px 0px rgba(120, 120, 120, 0.75);
     box-shadow: 0px 0px 1px 0px rgba(120, 120, 120, 0.75);
-    margin:10px 0;
 }
 .guildItem:hover
 {

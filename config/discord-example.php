@@ -10,3 +10,5 @@ $provider = new \Discord\OAuth\Discord([
 $options = [
     'scope' => ['identify', 'guilds']
 ];
+
+$botToken = '';

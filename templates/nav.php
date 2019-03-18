@@ -43,7 +43,7 @@ if(ieVersion(navigator.userAgent) !== undefined)
             if($isLoggedIn)
             {
                 echo '<li class="navButton ddMain"><a href="javascript:void(0)" id="profileName">'.$usr->username.'</a>
-        <div class="ddmenu pMenu">
+        <div class="ddmenu pMenu" style="right:0;">
             <a class="navButton" href="/dashboard" rel="nofollow">Dashboard</a>
             <a class="navButton" href="/profile" rel="nofollow">Profile</a>
             <a class="navButton" href="/logout" rel="nofollow">Logout</a>
