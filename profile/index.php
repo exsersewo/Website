@@ -102,7 +102,7 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
                         if($guild->code == NULL)
                         {
                             ?>
-                            <p>Most Active Guild: <?=$guild->name?>(<?=$guild->id?>)</p>
+                            <p>Most Active Guild: <?=$guild->name?><br>Level: <?=$userData->experience->mostActiveGuildLevel?><br>Total XP: <?=number_format($userData->experience->mostActiveGuildTotalXP)?></p>
                             <?php
                         }
                         ?>
