@@ -3,3 +3,4 @@
 includes/dbconfig.php
 config/discord.php
 config/mysql.php
+config/generic.php

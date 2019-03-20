@@ -2,14 +2,17 @@
     require $docRoot.'/php/discord.php';
 
     $jsondUser = getJSONfromUser($usr);
+
+    $jsondGuilds = getJSONGuildIDs();
     
     echo '<h1 class="center">'.$usr->username.'<span class="tiny">#'.$usr->discriminator.'</span>\'s Dashboard</h2>';
 ?>
-<ul id="guildList">
+<div id="guildList">
 
-</ul>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
+const guildIds = <?=$jsondGuilds?>;
 const user = <?=$jsondUser?>;
 var guilds = user.guilds;
 
@@ -50,7 +53,21 @@ function getGuildObject(guild)
     var ret = '';
     var iconurl = guild.icon != null ? 'https://cdn.discordapp.com/icons/'+guild.id+'/'+guild.icon+'.png' : 'https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png';
     
-    ret += '<li class="guildItem">';
+    //ret += '< class="">';
+    let found = false;
+    guildIds.forEach(function(id)
+    {
+        if(parseInt(id) == parseInt(guild.id))
+        {
+            ret += '<a class="guildItem" href="/dashboard/'+guild.id+'">';
+            found = true;
+            return;
+        }
+    });
+    if(found == false)
+    {
+        ret += '<a class="guildItem" href="//discordapp.com/oauth2/authorize?client_id=270047199184945152&scope=bot&permissions=-1&guild_id='+guild.id+'">';
+    }
     ret += '<img class="guildItem-ico" src="'+iconurl+'?size=512"/>';
     ret += '<div class="guildDetails">';
     ret += '<div class="guildItem-name">'+guild.name+'</div>';
@@ -58,9 +75,8 @@ function getGuildObject(guild)
     ret += '<div class="guildFooter">';
     ret += '<div class="guildItem-perms">'+getHighestPermissionName(guild)+'</div>';
     ret += '<hr>';
-    ret += '<a class="manageButton" href="/dashboard/'+guild.id+'">Manage</a>';
-    ret += '</div>';
-    ret += '</li>';
+    ret += '<span class="manageButton">'+((found == true) ? 'Manage' : 'Invite')+'</span>';
+    ret += '</div></a>';
 
     return ret;
 }

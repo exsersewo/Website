@@ -25,33 +25,38 @@ if(ieVersion(navigator.userAgent) !== undefined)
 }
 </script>
 <nav>
-    <a class="navButton name" href="/">Skuld</a>
-    <a class="burgerButton" href="javascript:void(0)" onclick="showMenu()"><i class="fa fa-bars"></i></a>
-    <ul id="navButtons">
-        <li class="navButton divNav"><a href="/commands">Commands</a></li>
-        <li class="navButton divNav"><a href="/credits">Credits</a></li>
-        <li class="navButton divNav ddMain" id="lbName">Leaderboard
-        <div class="ddmenu">
-            <a class="navButton" href="/leaderboard/money">Money</a>
-        </div></li>
-        <?php
-            if(!$isLoggedIn)
-                echo '<li class="navButton"><a href="/login" rel="nofollow">Login</a></li>';
-        ?>
+<a class="navButton name" href="/">Skuld</a>
+<a class="burgerButton" href="javascript:void(0)" onclick="showMenu()"><i class="fa fa-bars"></i></a>
+<ul id="navButtons">
+<li class="navButton divNav"><a href="/commands">Commands</a></li>
+<li class="navButton divNav"><a href="/credits">Credits</a></li>
+<li class="navButton divNav ddMain" id="lbName">Leaderboard
+<div class="ddmenu">
+<a class="navButton" href="/leaderboard/money">Money</a>
+</div>
+</li>
+<?php
+if(!$isLoggedIn)
+{
+?>
+<li class="navButton"><a href="/login" rel="nofollow">Login</a>
+<?php
+}
+?>
 <li class="navButton" ><a href="/stats">Stats</a></li>
-        <?php
-            if($isLoggedIn)
-            {
-                echo '<li class="navButton ddMain"><a href="javascript:void(0)" id="profileName">'.$usr->username.'</a>
-        <div class="ddmenu pMenu" style="right:0;">
-            <a class="navButton" href="/dashboard" rel="nofollow">Dashboard</a>
-            <a class="navButton" href="/profile" rel="nofollow">Profile</a>
-            <a class="navButton" href="/logout" rel="nofollow">Logout</a>
-        </div></li>
-    ';
-            }
-        ?>
-
+<?php
+if($isLoggedIn)
+{?>
+<li class="navButton ddMain"><a href="javascript:void(0)" id="profileName"><?=$usr->username?></a>
+<div class="ddmenu pMenu" style="right:0;">
+<a class="navButton" href="/dashboard" rel="nofollow">Dashboard</a>
+<a class="navButton" href="/profile" rel="nofollow">Profile</a>
+<a class="navButton" href="/logout" rel="nofollow">Logout</a>
+</div>
+</li>
+<?php
+}
+?>
 </ul>
 </nav>
 <div id="navhandler" style="width:100%;height:100%;display:none;position:fixed;margin:0;padding:0;z-index:99;" onclick="hideMenu()"></div>

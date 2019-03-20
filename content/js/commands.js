@@ -72,9 +72,12 @@ function search(event)
     {
         e.Commands.forEach(function(g)
         {
-            if(g.Name.includes(event.srcElement.value))
+            if(g.Name.includes(event.srcElement.value) || (g.Description != null && g.Description.includes(event.srcElement.value)) || getUsageFromCommand(g).includes(event.srcElement.value))
             {
-                moduleCommands.innerHTML += '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">'+e.Name+'</span></td><td>'+g.Description+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
+                let html = '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">';
+                html += e.Name+'</span></td><td>'+(g.Description == null ? 'No Description' : g.Description)+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
+
+                moduleCommands.innerHTML += html;
             }
         });
     });
@@ -160,8 +163,11 @@ function changeModule(sender, module)
     {
         e.Commands.forEach(function(g)
         {
-            moduleCommands.innerHTML += '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">'+e.Name+'</span></td><td>'+g.Description+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
-        });
+            let html = '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">';
+            html += e.Name+'</span></td><td>'+(g.Description == null ? 'No Description' : g.Description)+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
+
+            moduleCommands.innerHTML += html;
+       });
     });
 }
 

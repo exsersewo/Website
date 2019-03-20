@@ -1,9 +1,13 @@
-const baseUSR = "https://beta.skuldbot.uk/tools/ws.php?userID=";
-const baseGLD = "https://beta.skuldbot.uk/tools/ws.php?guildID=";
-
+const toolBaseDev = "https://localhost/php/ws.php";
+const toolBaseProd = "https://beta.skuldbot.uk/php/ws.php";
 const apiBaseDev = "https://localhost:8081/";
 const apiBaseProd = "https://api.skuldbot.uk/";
+
 var apiBase = apiBaseDev;
+var toolBase = toolBaseDev;
+
+var baseUSR = toolBase+"?userID=";
+var baseGLD = toolBase+"?guildID=";
 
 var offset = 0;
 var url = apiBase;
@@ -20,8 +24,6 @@ function httpRequest(address, reqType) {
     req.send();
     return req;
 }
-
-this.ldata;
 
 function doUser(exp)
 {

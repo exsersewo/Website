@@ -60,7 +60,7 @@
         <div class="stat">
             <i class="stat-img fa fa-cogs"></i>
             <div class="stat-name">Latency</div>
-            <div class="stat-desc"><?=$data->Ping??$na?></div>
+            <div class="stat-desc" id="ping"></div>
         </div>
         <div class="stat">
             <a href="https://botsfordiscord.com/bots/270047199184945152"><img src="https://botsfordiscord.com/api/bot/270047199184945152/widget" /></a>
@@ -83,6 +83,7 @@ var options = {
 };
 var users = <?=$data->Users??'"'.$na.'"'?>;
 var guilds = <?=$data->Guilds??'"'.$na.'"'?>;
+var ping = <?=$data->Ping??'"'.$na.'"'?>;
 
 if(users != "N/A")
 {
@@ -99,5 +100,13 @@ if(guilds != "N/A")
 else
 {
     document.getElementById('guilds').innerText = 'N/A';
+}
+if(ping != "N/A")
+{
+    new CountUp('ping', 0, ping, 0, 2.5, options).start(() => document.getElementById('ping').innerHTML += "ms");
+}
+else
+{
+    document.getElementById('ping').innerText = 'N/A';
 }
 </script>

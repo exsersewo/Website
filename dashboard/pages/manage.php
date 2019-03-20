@@ -1,5 +1,4 @@
 <?php
-    require $docRoot.'/config/mysql.php';
     require $docRoot.'/php/discord.php';
 
     $wscli;

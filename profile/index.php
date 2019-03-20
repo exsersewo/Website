@@ -58,15 +58,22 @@
     <link rel="stylesheet" type="text/css" href="../content/css/profile.css">
 </head>
 <body>
-<?php include $docRoot.'/templates/nav.php'; $nextLevel = getXPRequirement(intval($userData->level)+1, 1.618); ?>
+<?php 
+include $docRoot.'/templates/nav.php';
+require $docRoot.'/php/discord.php';
+$guild = getGuildInfofromJSON(intval($userData->experience->mostActiveGuild));
+$nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.618);
+?>
 <main>
-<div class="backgroundHolder"></div>
+    <div class="backgroundHolder"></div>
     <div class="section">
-        <h1 class="center"><?=$usr->username?><span class="tiny">#<?=$usr->discriminator?></span>'s Profile</h2>
-        <h3 class="center"><?=$userData->title?></h3>
-        <img class="user-img" src="<?=$avatar?>"/>
+        <div class="profileName">
+            <img class="user-img" src="<?=$avatar?>"/>
+            <span class="profileUsername center"><?=$usr->username?><span class="tiny">#<?=$usr->discriminator?></span>'s Profile</span>
+            <span class="profileTitle center"><?=$userData->title?></span>
+        </div>
 
-        <ul class="dropdownUser">
+        <ul class="flexBar">
             <li><a href="#info" onclick="doSwap(event)">Info</a></li>
             <li><a href="#bkgr" onclick="doSwap(event)">Backgrounds</a></li>
             <li><a href="#sett" onclick="doSwap(event)">Settings</a></li>
@@ -85,14 +92,22 @@
                 </div>
                 <div class="microsection">
                     <div class="microhead">
-                        <h1>Global Ranking</h1>
+                        <h1>Global Ranking</h1><h1 class="right" style="margin-top:-80px;line-height:75px;margin-right:24px;">
+                        <?=number_format($userData->experience->currentRank)?>/<?=number_format($userData->experience->totalRank)?></h1>
                     </div>
                     <div class="microcontent">
-                        <h3 class="center"><?=number_format($userData->rank)?>/<?=number_format($userData->totalrank)?></h3>
-                        <p>Total XP: <?=number_format($userData->totalxp)?></p>
-                        <p>Progress to level <?=intval($userData->level)+1?>: <?=number_format($userData->xp)?>/<?=number_format($nextLevel)?></p>
+                        <p>Total XP: <?=number_format($userData->experience->totalXP)?></p>
+                        <p>Progress to level <?=intval($userData->experience->currentLevel)+1?>: <?=number_format($userData->experience->currentXP)?>/<?=number_format($nextLevel)?></p>
+                        <?php
+                        if($guild->code == NULL)
+                        {
+                            ?>
+                            <p>Most Active Guild: <?=$guild->name?>(<?=$guild->id?>)</p>
+                            <?php
+                        }
+                        ?>
                     </div>
-                    <progress id="progress" value="<?=$userData->xp?>" max="<?=$nextLevel?>"></progress>
+                    <progress id="progress" value="<?=$userData->experience->currentXP?>" max="<?=$nextLevel?>"></progress>
                 </div>
                 <?php
                 if(intval($userData->favCommandUsg) > 0)
@@ -119,7 +134,7 @@
                         <h1>Current Background</h1>
                     </div>
                     <div class="microcontent" style="margin-left:-15px;margin-top:-10px;">
-                        <div style="background:<?=(strpos('#', $userData->background) !== 0) ? 'url('.$userData->background.')' : $userData->background?>;background-size:auto 500px;width:auto;height:500px;"></div>
+                        <div style="background:<?=(strpos($userData->background, '#') !== 0) ? 'url('.$userData->background.')' : $userData->background?>;background-size:auto 500px;width:auto;height:500px;"></div>
                     </div>
                 </div>
                 <div class="microsection">

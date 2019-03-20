@@ -1,8 +1,9 @@
 <?php
     include 'tools.php';
+    include '../config/generic.php';
     $apiBaseProd = "https://api.skuldbot.uk/";
     $apiBaseDev = "https://localhost:8081/";
-    $apiBase = $apiBaseDev;
+    $apiBase = (($isProd == true) ? $apiBaseProd : $apiBaseDev);
 
     function getGlobalMoneyLB()
     {

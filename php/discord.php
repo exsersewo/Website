@@ -1,6 +1,30 @@
 <?php
 include $docRoot.'/vendor/autoload.php';
 include $docRoot.'/config/discord.php';
+require $docRoot.'/config/mysql.php';
+
+function getJSONGuildIDs()
+{
+    $dbconnection = new mysqli(MySQLConf::Hostname, MySQLConf::User, MySQLConf::Password, MySQLConf::Table, MySQLConf::Port);
+
+    $cmd = "SELECT `GuildID` FROM `guilds`;";
+
+    $result = $dbconnection->query($cmd);
+
+    if(!$result  || $result->num_rows == 0)
+    {
+        return null;
+    }
+    
+    $guilds = array();
+
+    while($res = $result->fetch_assoc())
+    {
+        array_push($guilds, $res["GuildID"]);
+    }
+
+    return json_encode($guilds);
+}
 
 function getJSONfromUser($user)
 {
@@ -36,6 +60,30 @@ function getJSONfromUser($user)
         'mfa_enabled' => $user->mfa_enabled,
         'guilds' => json_decode($jsondGuilds)
     ));
+}
+
+function getGuildInfofromJSON($guildId)
+{
+    global $botToken;
+
+    $url = 'https://discordapp.com/api/guilds/'.$guildId;
+
+    $ch = curl_init();
+
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $url,
+        CURLOPT_HTTPHEADER     => array('Authorization: Bot '.$botToken), 
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_FOLLOWLOCATION => 1,
+    ));
+
+    $q = "";
+
+    $q = curl_exec($ch);
+
+    curl_close($ch);
+    
+    return json_decode($q);
 }
 
 function getChannelsFromGuild($guildId)

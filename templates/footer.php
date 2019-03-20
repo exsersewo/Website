@@ -23,8 +23,8 @@
     </div>
     <div class="footer-content footer-right right">
         <h3>Information</h3>
-        <p>Skuld is written in C# using Discord.Net and some other packages.</p>
-        <p>This website is written in PHP, CSS & HTML<br><span class="strikethrough tiny">Because I cba to learn anything else</span></p>
+        Skuld is written in C# &amp; PHP.<br><br>
+        This website is written in PHP, JS, CSS & HTML <span class="strikethrough tiny">Because I cba to learn anything else</span>
     </div>
     <div class="copybar"><span class="copy">&copy;
         <?php
