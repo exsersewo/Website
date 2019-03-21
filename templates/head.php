@@ -1,6 +1,6 @@
 <title><?=$pageName? $pageName : '?? - Skuld'?></title>
     <link href="//fonts.googleapis.com/css?family=Roboto|Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/content/css/material.css">
     <link rel="stylesheet" type="text/css" href="/content/css/generic.css">
     <meta name="theme-color" content="#00ad4e">
