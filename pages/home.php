@@ -1,4 +1,5 @@
 <?php
+include $toolsRoot.'/bot.php';
 include $toolsRoot.'/tools.php';
 $pageName = "Home - Skuld";
 $slogans = array(
