@@ -46,23 +46,28 @@ function getSocialMediaLink($platform, $url)
     switch($platform)
     {
         case 'Website':
-        $ret = $ret.'<i class="fa fa-chain"></i>';
+        $ret = $ret.'<i class="fas fa-link"></i>';
         break;
         case 'Mixer':
+        $ret = $ret.'<i class="fas fa-satellite-dish"></i>';
+        break;
         case 'Twitch':
-        $ret = $ret.'<i class="fa fa-twitch"></i>';
+        $ret = $ret.'<i class="fab fa-twitch"></i>';
         break;
         case 'Twitter':
-        $ret = $ret.'<i class="fa fa-twitter"></i>';
+        $ret = $ret.'<i class="fab fa-twitter"></i>';
         break;
         case 'Youtube':
-        $ret = $ret.'<i class="fa fa-youtube-play"></i>';
+        $ret = $ret.'<i class="fab fa-youtube"></i>';
         break;
         case 'Facebook':
-        $ret = $ret.'<i class="fa fa-facebook"></i>';
+        $ret = $ret.'<i class="fab fa-facebook-f"></i>';
         break;
         case 'Github':
-        $ret = $ret.'<i class="fa fa-github"></i>';
+        $ret = $ret.'<i class="fab fa-github"></i>';
+        break;
+        case 'Newgrounds':
+        $ret = $ret.'<i class="fas fa-video"></i>';
         break;
         default:
         $ret = $ret.$platform;
