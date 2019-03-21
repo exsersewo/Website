@@ -74,9 +74,9 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
         </div>
 
         <ul class="flexBar">
-            <li><a href="#info" onclick="doSwap(event)">Info</a></li>
-            <li><a href="#bkgr" onclick="doSwap(event)">Backgrounds</a></li>
-            <li><a href="#sett" onclick="doSwap(event)">Settings</a></li>
+            <li><a id="infobtn" href="#info" onclick="doSwap(event)"><i class="fa fa-info-circle"></i> Info</a></li>
+            <li><a id="bkgrbtn" href="#bkgr" onclick="doSwap(event)"><i class="fa fa-images"></i> Backgrounds</a></li>
+            <li><a id="settbtn" href="#sett" onclick="doSwap(event)"><i class="fa fa-cogs"></i> Settings</a></li>
         </ul>
 
         <div class="content">
@@ -156,10 +156,27 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
         let info = document.querySelector('#infosection');
         let bkgr = document.querySelector('#bkgrsection');
         let sett = document.querySelector('#settsection');
+        let selected = document.querySelectorAll('.selected');
+
+        function clearSelection()
+        {
+            selected = document.querySelectorAll('.selected');
+            if(selected==null)
+            {
+                return;
+            }
+
+            selected.forEach(function(e)
+            {
+                var reg = new RegExp('(\\s|^)selected(\\s|$)');
+                e.className=e.className.replace(reg,'');
+            });          
+        }
 
         function doSwap(event)
         {
-            console.log(event.srcElement.hash);
+            clearSelection();
+            event.srcElement.parentElement.className+="selected";
             switch(event.srcElement.hash)
             {
                 case '#info':
@@ -185,6 +202,8 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
 
         if(window.location.hash)
         {
+            clearSelection();
+            document.querySelector(window.location.hash+'btn').parentElement.className+="selected";
             switch(window.location.hash)
             {
                 case '#info':
@@ -211,7 +230,6 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
         {
             window.location.hash = '#info';
         }
-        console.log(window.location.hash);
     </script>
 </main>
 <?php include $docRoot.'/templates/footer.php'; ?>

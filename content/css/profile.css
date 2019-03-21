@@ -58,7 +58,8 @@
     display:inline-block;
     text-align:center;
 }
-.flexBar li:hover
+.flexBar li:hover,
+.selected
 {
     background-color:var(--dteal);
 }
@@ -89,7 +90,7 @@
 }
 .microsection
 {
-    background-color: #303030;
+    background-color: #30303081;
     display:block;
     margin: 0 auto;
     position:relative;
