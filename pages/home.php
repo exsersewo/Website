@@ -49,7 +49,7 @@ $slogans = array(
             <div class="feature-desc">Skuld makes your servers more fun with actions you can perform on a person.</div>
         </li>
         <li class="feature">
-            <i class="feature-img fa fa-cogs"></i>
+            <i class="feature-img fas fa-users-cog"></i>
             <div class="feature-name">Moderation</div>
             <div class="feature-desc">Skuld helps you moderate your server.</div>
         </li>
@@ -59,12 +59,12 @@ $slogans = array(
             <div class="feature-desc">Skuld can generate a <a href="//lmgtfy.com/" target="_blank">&quot;Let Me Google That For You&quot;</a> link or search Google, Youtube &amp; Imgur for you from within Discord.</div>
         </li>
         <li class="feature">
-            <i class="feature-img fa fa-book "></i>
+            <i class="feature-img fas fa-book-open"></i>
             <div class="feature-name">Comics</div>
             <div class="feature-desc">Skuld can get comic strips from Cyanide &amp; Happiness &amp; XKCD (more coming soon).</div>
         </li>
         <li class="feature">
-            <i class="feature-img fa fa-laptop"></i>
+            <i class="feature-img fas fa-tv"></i>
             <div class="feature-name">Animus and Mangos</div>
             <div class="feature-desc">Skuld can search for all of your weeby needs.</div>
         </li>
