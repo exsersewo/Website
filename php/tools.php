@@ -69,6 +69,9 @@ function getSocialMediaLink($platform, $url)
         case 'Newgrounds':
         $ret = $ret.'<i class="fas fa-video"></i>';
         break;
+        case 'Instagram':
+        $ret = $ret.'<i class="fab fa-instagram"></i>';
+        break;
         default:
         $ret = $ret.$platform;
         break;
