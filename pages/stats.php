@@ -33,32 +33,32 @@
     <div class="section">
         <h2 class="center">Stats</h2>
         <div class="stat">
-            <i class="stat-img fa fa-gamepad"></i>
+            <i class="stat-img fas fa-code-branch"></i>
             <div class="stat-name">Version</div>
             <div class="stat-desc"><?=$data->Skuld??$na?></div>
         </div>
         <div class="stat">
-            <i class="stat-img fa fa-book "></i>
+            <i class="stat-img fas fa-server"></i>
             <div class="stat-name">Guilds</div>
             <div class="stat-desc" id="guilds"></div>
         </div>
         <div class="stat">
-            <i class="stat-img fa fa-laptop"></i>
+            <i class="stat-img fas fa-users"></i>
             <div class="stat-name">Users</div>
             <div class="stat-desc" id="users"></div>
         </div>
         <div class="stat">
-            <i class="stat-img fa fa-search"></i>
+            <i class="stat-img fas fa-memory"></i>
             <div class="stat-name">RAM Usage</div>
             <div class="stat-desc"><?=$data->MemoryUsed??$na?></div>
         </div>
         <div class="stat">
-            <i class="stat-img fa fa-laptop"></i>
+            <i class="stat-img fas fa-clock"></i>
             <div class="stat-name">Uptime</div>
             <div class="stat-desc"><?=$data->Uptime??$na?></div>
         </div>
         <div class="stat">
-            <i class="stat-img fa fa-cogs"></i>
+            <i class="stat-img fas fa-signal"></i>
             <div class="stat-name">Latency</div>
             <div class="stat-desc" id="ping"></div>
         </div>
