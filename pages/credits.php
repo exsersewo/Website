@@ -51,12 +51,32 @@ function getSection($jsonSection)
             <?=getSection($json->Developers);?>
         </ul>
     </div>
-    <div class="section">
-        <h3 class="center">Contributors</h3>
-        <ul class="features">
-            <?=getSection($json->Contributors);?>
-        </ul>
-    </div>
+    <?php
+    $contribs = getSection($json->Contributors);
+    if($contribs != NULL)
+    {
+        ?>
+        <div class="section">
+            <h3 class="center">Contributors</h3>
+            <ul class="features">
+                <?=$contribs?>
+            </ul>
+        </div>
+        <?php
+    }
+    $artists = getSection($json->Artists);
+    if($artists != NULL)
+    {
+        ?>
+        <div class="section">
+            <h3 class="center">Artists</h3>
+            <ul class="features">
+                <?=$artists?>
+            </ul>
+        </div>
+        <?php
+    }
+    ?>
     <div class="section">
         <h3 class="center">Server Staff</h3>
         <ul class="features">

@@ -77,7 +77,7 @@
 			]
 		}
 	],
-	"Contributors":
+	"Artists":
 	[
 		{
 			"Name": "HeyOPC",
@@ -94,6 +94,24 @@
 					"URL":"https://www.youtube.com/heyopc"
 				}
 			]
+		},
+		{
+			"Name": "StaggerNight",
+			"Tagline": "Your local slav",
+			"ImageURL":"/content/img/avatars/184872522523738113.png",
+			"Links":
+			[
+				{
+					"Platform":"Twitter",
+					"URL":"https://twitter.com/staggernight"
+				},
+				{
+					"Platform":"Newgrounds",
+					"URL":"https://staggernight.newgrounds.com/"
+				}
+			]
 		}
-	]
+	],
+	"Contributors":
+	[]
 }
