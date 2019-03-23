@@ -8,7 +8,9 @@ $pageName = "Commands - Skuld";
 <?php include $templateRoot.'/head.php';?>
 <link rel="stylesheet" type="text/css" href="/content/css/credits.css"/>
 <link rel="stylesheet" type="text/css" href="/content/css/commands.css"/>
-    <script type="text/javascript" src="/content/js/commands.js"></script>
+<link rel="stylesheet" type="text/css" href="/content/libs/macOSNotif/macOSNotif.min.css"/>
+<script type="text/javascript" src="/content/libs/macOSNotif/macOSNotif.min.js" defer></script>
+<script type="text/javascript" src="/content/js/commands.js" defer></script>
 </head>
 <body>
 <?php
@@ -21,7 +23,8 @@ $pageName = "Commands - Skuld";
             <div id="moduleList" style="display:inline-block;">
                 <input type="checkbox" checked='true' class="moduleCheckBox" onchange='changeModule(this, "all")' id="selectAll"><label for="selectAll">Select All Modules</label>
             </div>
-        </div><br><input id="search" oninput="search(event)" type="text" placeholder="Type a command name"/><br><br>
+        </div><br><input id="search" oninput="search(event)" type="text" placeholder="Type a command name"
+        <?=(isset($_GET['commands']) ? 'value="'.$_GET['commands'].'"' : '')?>/><br><br>
         <table id="moduleCommands">
             <tr>
                 <td>Name</td>
@@ -29,5 +32,15 @@ $pageName = "Commands - Skuld";
                 <td>Usage</td>
             </tr>
         </table>
+        <?php
+        if(isset($_GET['commands']))
+        {?>
+        <script>
+        window.onload = function()
+        {
+            searchRaw(document.getElementById("search"));
+        };
+        </script>
+        <?php } ?>
     </div>
 </main>

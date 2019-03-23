@@ -44,7 +44,14 @@ function getData()
 }
 getData();
 
-function search(event)
+macOSNotif({
+    dark:true,
+    title:'Commands',
+    subtitle:'Click the Usage cell to copy the command',
+    btn2Text:null
+});
+
+function searchRaw(element)
 {
     moduleCommands.innerHTML = '<tr><td>Name</td><td>Description</td><td>Usage</td></tr>';
 
@@ -72,15 +79,41 @@ function search(event)
     {
         e.Commands.forEach(function(g)
         {
-            if(g.Name.includes(event.srcElement.value) || (g.Description != null && g.Description.includes(event.srcElement.value)) || getUsageFromCommand(g).includes(event.srcElement.value))
+            if(g.Name.includes(element.value) || (g.Description != null && g.Description.includes(element.value)) || getUsageFromCommand(g).includes(element.value))
             {
-                let html = '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">';
-                html += e.Name+'</span></td><td>'+(g.Description == null ? 'No Description' : g.Description)+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
-
-                moduleCommands.innerHTML += html;
+                moduleCommands.innerHTML += getCmdHtml(g, e);
             }
         });
     });
+}
+
+function copy2Clip(str)
+{
+    try
+    {
+        var el = document.createElement('div');
+        el.setAttribute("contentEditable", true);
+        el.innerText = str;
+        document.body.appendChild(el);
+        window.getSelection().selectAllChildren(el);
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        macOSNotif({
+            dark:true,
+            title:'Commands',
+            subtitle:'Copied \''+str+'\' to the clipboard',
+            btn2Text:null
+        });
+    }
+    catch(ex)
+    {
+        console.log(ex);
+    }
+}
+
+function search(event)
+{
+    searchRaw(event.srcElement);
 }
 
 function displayModuleNames()
@@ -163,12 +196,24 @@ function changeModule(sender, module)
     {
         e.Commands.forEach(function(g)
         {
-            let html = '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">';
-            html += e.Name+'</span></td><td>'+(g.Description == null ? 'No Description' : g.Description)+'</td><td>sk!'+g.Name+" "+getUsageFromCommand(g)+'</td></tr>';
-
-            moduleCommands.innerHTML += html;
+            moduleCommands.innerHTML += getCmdHtml(g, e);
        });
     });
+}
+
+function getCmdHtml(g, e)
+{
+    let commandUsage = 'sk!'+g.Name+' '+getUsageFromCommand(g);
+
+    if(commandUsage[commandUsage.length-1] == ' ')
+    {
+        commandUsage = commandUsage.substr(0, commandUsage.length-1);
+    }
+
+    let html = '<tr><td>'+g.Name+'<span style="display:block;color:'+e.FontColor+';background-color:'+e.Color+' !important;">';
+    html += e.Name+'</span></td><td>'+(g.Description == null ? 'No Description' : g.Description)+'</td><td onclick="copy2Clip(\''+commandUsage.toString()+'\')">'+commandUsage+'</td></tr>';
+
+    return html;
 }
 
 function getUsageFromCommand(c)
