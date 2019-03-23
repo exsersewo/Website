@@ -1,10 +1,5 @@
-const toolBaseDev = "https://localhost/php/ws.php";
-const toolBaseProd = "https://beta.skuldbot.uk/php/ws.php";
-const apiBaseDev = "https://localhost:8081/";
-const apiBaseProd = "https://api.skuldbot.uk/";
-
-var apiBase = apiBaseDev;
-var toolBase = toolBaseDev;
+const toolBase = "https://beta.skuldbot.uk/php/ws.php";
+const apiBase = "https://api.skuldbot.uk/";
 
 var baseUSR = toolBase+"?userID=";
 var baseGLD = toolBase+"?guildID=";
