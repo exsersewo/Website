@@ -1,5 +1,5 @@
 <?php
-    if(session_status() == PHP_SESSION_NONE){session_start();}
+require $configRoot.'/generic.php';
 ?>
 <div id="footerbanner">
 <noscript>
@@ -34,7 +34,7 @@ if(ieVersion(navigator.userAgent) !== undefined)
 </div>
 </li>
 <?php
-if(!$isLoggedIn)
+if(!$isLoggedIn && ($enabledProfile && $enabledDashboard))
 {
 ?>
 <li class="navButton"><a href="/login" rel="nofollow"><i class="fas fa-sign-in-alt"></i> Login</a>

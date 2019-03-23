@@ -1,6 +1,8 @@
 <?php
-if(session_status() == PHP_SESSION_NONE){session_start();}
+require $configRoot.'/generic.php';
+if(!$enabledProfile && !$enabledDashboard) {header('Location: javascript://history.go(-1)');die();}
 
+if(session_status() == PHP_SESSION_NONE){session_start();}
 if(isset($_SESSION["access_token"])){session_destroy();}
 
 if (isset($_GET['code']) && $_GET['code'])
