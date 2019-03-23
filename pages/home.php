@@ -1,6 +1,6 @@
 <?php
-include $toolsRoot.'/bot.php';
-include $toolsRoot.'/tools.php';
+require $toolsRoot.'/bot.php';
+require $toolsRoot.'/tools.php';
 $pageName = "Home - Skuld";
 $slogans = array(
     53 => "Bolster your server with a fun bot",
