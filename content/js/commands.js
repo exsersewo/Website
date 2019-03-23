@@ -46,7 +46,7 @@ getData();
 
 function search(event)
 {
-    moduleCommands.innerHTML = '';
+    moduleCommands.innerHTML = '<tr><td>Name</td><td>Description</td><td>Usage</td></tr>';
 
     var cmds = [];
 
