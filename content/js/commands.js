@@ -45,6 +45,9 @@ function getData()
 getData();
 
 macOSNotif({
+    delay: 0.1,
+    interactDismiss:true,
+    autoDismiss: 5,
     dark:true,
     title:'Commands',
     subtitle:'Click the Usage cell to copy the command',
@@ -99,6 +102,9 @@ function copy2Clip(str)
         document.execCommand('copy');
         document.body.removeChild(el);
         macOSNotif({
+            delay: 0.1,
+            interactDismiss:true,
+            autoDismiss: 5,
             dark:true,
             title:'Commands',
             subtitle:'Copied \''+str+'\' to the clipboard',
