@@ -1,5 +1,5 @@
 <?php
-    include __DIR__.'/../vendor/autoload.php';
+    include $docRoot.'/vendor/autoload.php';
 
     use WebSocket\Client;
 

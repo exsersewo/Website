@@ -1,8 +1,4 @@
 <?php
-include $docRoot.'/vendor/autoload.php';
-include $docRoot.'/config/discord.php';
-require $docRoot.'/config/mysql.php';
-
 function getJSONGuildIDs()
 {
     $dbconnection = new mysqli(MySQLConf::Hostname, MySQLConf::User, MySQLConf::Password, MySQLConf::Table, MySQLConf::Port);
@@ -131,4 +127,38 @@ function getRolesFromGuild($guildId)
     curl_close($ch);
     
     return json_decode($q); 
+}
+
+function isUserBanned($id)
+{
+    $dbconnection = new mysqli(MySQLConf::Hostname, MySQLConf::User, MySQLConf::Password, MySQLConf::Table, MySQLConf::Port);
+
+    $cmd = "SELECT `Banned` FROM `users` WHERE UserID = ".intval($id).";";
+
+    $result = $dbconnection->query($cmd);
+
+    if(!$result  || $result->num_rows == 0)
+    {
+        return null;
+    }
+
+    return boolval($result->fetch_assoc()["Banned"]);
+}
+
+function getBanReason($id)
+{
+    $dbconnection = new mysqli(MySQLConf::Hostname, MySQLConf::User, MySQLConf::Password, MySQLConf::Table, MySQLConf::Port);
+
+    $cmd = "SELECT `BanReason` FROM `users` WHERE UserID = ".intval($id).";";
+
+    $result = $dbconnection->query($cmd);
+
+    if(!$result  || $result->num_rows == 0)
+    {
+        return "No Reason Specified";
+    }
+
+    $r = $result->fetch_assoc()["BanReason"];
+
+    return ($r == NULL || $r == "") ? "No Reason Specified" : $r;
 }

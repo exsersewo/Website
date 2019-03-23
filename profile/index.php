@@ -1,8 +1,26 @@
 <?php
-    $docRoot = $_SERVER['DOCUMENT_ROOT'];
-    require $docRoot.'/config/discord.php';
-        if (session_status() == PHP_SESSION_NONE){session_start();}
-    require $docRoot.'/php/user.php';
+    $docRoot = $_SERVER["DOCUMENT_ROOT"];
+    $configRoot = $docRoot.'/config';
+    $toolsRoot = $docRoot.'/php';
+    $pagesRoot = $docRoot.'/pages';
+    $errorRoot = $docRoot.'/errors';
+    $templateRoot = $docRoot.'/templates';
+    $legalRoot = $docRoot.'/templates/legal';
+    
+    if (session_status() == PHP_SESSION_NONE){session_start();}
+
+    require $configRoot.'/generic.php';
+    require $configRoot.'/discord.php';
+    require $configRoot.'/mysql.php';
+    require $toolsRoot.'/discord.php';
+    require $toolsRoot.'/user.php';
+
+    if (!$enabledProfile)
+    {
+        $errorReason = "Profile Page Disabled, come back later";
+        include $errorRoot.'/403.php';
+        die();
+    }
 
     function getXPRequirement($level, $growth)
     {
@@ -14,9 +32,15 @@
         header('Location: ../login');
     }
 
+    $d = null;
+
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL, "https://api.skuldbot.uk/user/".$usr->id);
+    if($isProd)
+        curl_setopt($ch, CURLOPT_URL, "https://api.skuldbot.uk/user/".intval($usr->id));
+    else
+        curl_setopt($ch, CURLOPT_URL, "http://localhost:8079/user/".intval($usr->id));
+
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -54,15 +78,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include $docRoot.'/templates/head.php'; ?>
+    <?php include $templateRoot.'/head.php'; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/profile.css">
 </head>
 <body>
 <?php 
-include $docRoot.'/templates/nav.php';
-require $docRoot.'/php/discord.php';
-$guild = getGuildInfofromJSON(intval($userData->experience->mostActiveGuild));
-$nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.618);
+include $templateRoot.'/nav.php';
+$guild = $nextLevel = null;
+if(isset($userData->experience))
+{
+    $guild = getGuildInfofromJSON(intval($userData->experience->mostActiveGuild));
+    $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.618);
+}
 ?>
 <main>
     <div class="backgroundHolder"></div>
@@ -90,6 +117,9 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
                         <p>Last Daily Use: <?=date('d/m/Y', $userData->daily)?></p>
                     </div>
                 </div>
+                <?php
+                if(isset($userData->experience))
+                {?>
                 <div class="microsection">
                     <div class="microhead">
                         <h1>Global Ranking</h1><h1 class="right" style="margin-top:-80px;line-height:75px;margin-right:24px;">
@@ -99,7 +129,7 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
                         <p>Total XP: <?=number_format($userData->experience->totalXP)?></p>
                         <p>Progress to level <?=intval($userData->experience->currentLevel)+1?>: <?=number_format($userData->experience->currentXP)?>/<?=number_format($nextLevel)?></p>
                         <?php
-                        if($guild->code == NULL)
+                        if(!isset($guild->code))
                         {
                             ?>
                             <p>Most Active Guild: <?=$guild->name?><br>Level: <?=$userData->experience->mostActiveGuildLevel?><br>Total XP: <?=number_format($userData->experience->mostActiveGuildTotalXP)?></p>
@@ -110,6 +140,7 @@ $nextLevel = getXPRequirement(intval($userData->experience->currentLevel)+1, 1.6
                     <progress id="progress" value="<?=$userData->experience->currentXP?>" max="<?=$nextLevel?>"></progress>
                 </div>
                 <?php
+                }
                 if(intval($userData->favCommandUsg) > 0)
                 {
                     ?>

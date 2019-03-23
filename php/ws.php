@@ -1,6 +1,4 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
-
 use WebSocket\Client;
 
 header('Content-Type: application/json');

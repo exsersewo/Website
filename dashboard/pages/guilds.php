@@ -1,6 +1,4 @@
 <?php
-    require $docRoot.'/php/discord.php';
-
     $jsondUser = getJSONfromUser($usr);
 
     $jsondGuilds = getJSONGuildIDs();

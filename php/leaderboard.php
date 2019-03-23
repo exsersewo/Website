@@ -1,6 +1,4 @@
 <?php
-    include 'tools.php';
-    include '../config/generic.php';
     $apiBaseProd = "https://api.skuldbot.uk/";
     $apiBaseDev = "https://localhost:8081/";
     $apiBase = (($isProd == true) ? $apiBaseProd : $apiBaseDev);

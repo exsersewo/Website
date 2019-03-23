@@ -3,18 +3,26 @@ include $toolsRoot.'/bot.php';
 include $toolsRoot.'/tools.php';
 $pageName = "Home - Skuld";
 $slogans = array(
-    20 => "Yet another anime profile pic having discord bot because why not?",
-    21 =>"A Sword Art Online inspired discord bot.",
-    22 => "A weeby discord bot because there wasn't enough already.",
-    23 =>"A discord bot that does some stuff I guess",
-    1 => "Who are you? What year is this? How did you get here? Who am I?",
-    2 => "ssh://cjohnson@GLaDOS:tier3",
-    3 => "I forgot what to write here. Please help me.",
-    4 => "Insert slogan here",
-    5 => "Please tell father I am well. I have missed the ship by three days, but that does not matter. I am home. I am healthy.",
-    6 => "this is so sad, play despacito 2 ft red pewdiepie",
-    7 => "the bread will be okay",
-    8 => "79 6f 75 74 75 2e 62 65 2f 4a 69 4c 59 71 4e 34 35 77 74 6f"
+    52 => "A discord bot that does some stuff I guess",
+    51 => "Another weeb bot because there isn't enough heccin' dag-nabbit",
+    50 => "Utilitarian? ✔ Fun? ✔ Shitposting approved? ✔",
+    16 => "Another discord bot because why not? ¯\_(ツ)_/¯",
+    15 => "This bot does nothing new",
+    14 => "79 6f 75 74 75 2e 62 65 2f 4a 69 4c 59 71 4e 34 35 77 74 6f",
+    13 => "the bread will be okay",
+    12 => "this is so sad, play despacito 2 ft red pewdiepie",
+    11 => "Please tell father I am well. I have missed the ship by three days, but that does not matter. I am home. I am healthy.",
+    10 => "Insert slogan here",
+    9 => "I forgot what to write here. Please help me.",
+    8 => "ssh://cjohnson@GLaDOS:tier3",
+    7 => "Who are you? What year is this? How did you get here? Who am I?",
+    6 => "&lt;?=\$slogan?&gt;",
+    5 => "{{slogan}}",
+    4 => "Discord loading lines suck, prove me wrong.",
+    3 => "Now with 100% more OC",
+    2 => "Excuse me, is this discord bot gluten free?",
+    1 => "I use arch btw",
+    0 => "More bloat than systemd"
 );
 ?>
 
@@ -25,9 +33,10 @@ $slogans = array(
 </head>
 <body>
 <?php include $templateRoot.'/nav.php';?>
-<div class="backgroundHolder"></div>
 <div id="mainContent">
-    <div class="landing" style='background-image:url("/content/img/Ygg.png");'>
+<div class="backgroundHolder"></div>
+    <div class="landing">
+        <div class="landing-background"></div>
         <img class="landing-img" style="box-shadow:0px 0px 10px 3px <?=getBotOnlineStatus($botUsr->Data->Status??"");?>;" src="/content/img/Skuld.png"/>
         <div class="bot-info-sect">
             <span class="bot-name-sect">

@@ -18,9 +18,11 @@
 .stat-img
 {
     font-size:20vh;
+    vertical-align: middle;
 }
 .stat .stat-name
 {
+    margin-top:10px;
     font-size:2.5vh;
 }
 .stat .stat-desc

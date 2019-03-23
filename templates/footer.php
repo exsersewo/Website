@@ -28,5 +28,5 @@
     </div>
     <div class="copybar"><span class="copy">&copy;
         <?php
-        $fromYear = 2018; $thisYear = (int)date('Y'); echo $fromYear . (($fromYear != $thisYear) ? '-' . $thisYear : '');?> exsersewo</span></div>
+        $fromYear = 2018; $thisYear = (int)date('Y'); echo $fromYear . (($fromYear != $thisYear) ? '-' . $thisYear : '');?> SkuldBot Team</span></div>
 </footer>

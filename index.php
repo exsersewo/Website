@@ -7,12 +7,10 @@
     $templateRoot = $docRoot.'/templates';
     $legalRoot = $docRoot.'/templates/legal';
 
-    require $configRoot.'/discord.php';
     if (session_status() == PHP_SESSION_NONE)
     {
         session_start();
     }
-    require $toolsRoot.'/user.php';
 
     $page = "";
 
@@ -30,6 +28,16 @@
     if($page == "dashboard" || $page == "profile")
     {
         header('Location: /'.$page);
+    }
+    
+    include $docRoot.'/vendor/autoload.php';
+    include $configRoot.'/discord.php';
+    include $configRoot.'/mysql.php';
+    include $toolsRoot.'/discord.php';
+
+    if(strtolower($page) != 'logout')
+    {
+        include $toolsRoot.'/user.php';
     }
 
     $pageFile = $pagesRoot.'/'.$page.'.php';

@@ -1,9 +1,28 @@
 <?php
-    $docRoot = $_SERVER['DOCUMENT_ROOT'];
+    $docRoot = $_SERVER["DOCUMENT_ROOT"];
+    $configRoot = $docRoot.'/config';
+    $toolsRoot = $docRoot.'/php';
+    $pagesRoot = $docRoot.'/pages';
+    $errorRoot = $docRoot.'/errors';
+    $templateRoot = $docRoot.'/templates';
+    $legalRoot = $docRoot.'/templates/legal';
+    
+    if (session_status() == PHP_SESSION_NONE){session_start();}
+
+    require $configRoot.'/generic.php';
+    require $configRoot.'/discord.php';
+    require $configRoot.'/mysql.php';
+    require $toolsRoot.'/discord.php';
+    require $toolsRoot.'/user.php';
+    
+    if(!$enabledDashboard)
+    {
+        $errorReason = 'Dashboard page disabled';
+        include $docRoot.'/errors/403.php';
+        die();
+    }
+    
     require $docRoot.'/vendor/autoload.php';
-    require $docRoot.'/config/discord.php';
-    if(session_status() == PHP_SESSION_NONE){session_start();}
-    require $docRoot.'/php/user.php';
 
     $pageName = "Dashboard - Skuld";
     $guilds = null;

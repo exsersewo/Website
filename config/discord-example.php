@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+require $docRoot.'/vendor/autoload.php';
 
 $provider = new \Discord\OAuth\Discord([
     'clientId' => "",

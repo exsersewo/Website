@@ -39,6 +39,7 @@ body
 {
     color:#dfdfdf;
     color:var(--light);
+    background-color:var(--dark);
     text-decoration: none;
     margin:0;
     padding:0;
@@ -82,13 +83,16 @@ nav a:visited
     width:auto;
     font-size:25px;
     list-style:none;
-    display:block;
+    display:flex;
     text-align:right;
+    position:absolute;
+    right:0;
+    justify-content: space-evenly;
 }
 .navButton
 {
+    display:block;
     width:auto;
-    display:inline-block;
     height:64px;
     padding:0 5px;
 }
@@ -123,17 +127,17 @@ nav a:visited
     background:#0f2e92;
     background:var(--dblue);
     display:none;
-    margin:0;
     margin-top:4px;
-    width:8.8rem;
+    width:100%;
     text-align:center;
-    position:fixed;
-    padding-right:10px;
+    position:relative;
     margin-left:-5px;
+    padding-right:10px; 
 }
-.pMenu
+#profileName
 {
-    width:10rem;
+    text-align:center;
+    display:block;
 }
 .ddmenu .navButton
 {

@@ -1,7 +1,5 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'].'/config/discord.php';
     if(session_status() == PHP_SESSION_NONE){session_start();}
-    require $_SERVER['DOCUMENT_ROOT'].'/php/user.php';
 ?>
 <div id="footerbanner">
 <noscript>
