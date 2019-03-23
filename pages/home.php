@@ -3,9 +3,13 @@ include $toolsRoot.'/bot.php';
 include $toolsRoot.'/tools.php';
 $pageName = "Home - Skuld";
 $slogans = array(
+    53 => "Bolster your server with a fun bot",
     52 => "A discord bot that does some stuff I guess",
     51 => "Another weeb bot because there isn't enough heccin' dag-nabbit",
     50 => "Utilitarian? ✔ Fun? ✔ Shitposting approved? ✔",
+    49 => "ᐊᐃᓐᖓᐃ ᑐᙵᓱ",
+    18 => ".... . .-.. .-.. --- --..-- ....... .- -- ....... ... - ..- -.-. -.- ....... .. -. ....... .. --. .-.. --- ---",
+    17 => "-- .- -.. . ....... .-- .. - .... ....... - . .- ....... ....... -.-. .-. ..- -- .--. . - ... ",
     16 => "Another discord bot because why not? ¯\_(ツ)_/¯",
     15 => "This bot does nothing new",
     14 => "79 6f 75 74 75 2e 62 65 2f 4a 69 4c 59 71 4e 34 35 77 74 6f",
