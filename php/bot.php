@@ -8,7 +8,7 @@
 
     try
     {
-        $wscli = new Client("ws://127.0.0.1:37821");
+        $wscli = new Client(($webSocketSSL ? "wss" : "ws")."://".$webSocketURL??"0.0.0.0".":".$webSocketPort);
         if($wscli != null)
         {
             $wscli->send("user:270047199184945152");

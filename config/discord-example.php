@@ -12,3 +12,6 @@ $options = [
 ];
 
 $botToken = '';
+$webSocketURL = "0.0.0.0";
+$webSocketPort = "37821";
+$webSocketSSL = false;
