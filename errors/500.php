@@ -1,4 +1,7 @@
-<?php $pageName = '500 - Skuld'; ?>
+<?php 
+http_response_code(500);
+$pageName = '500 - Skuld'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

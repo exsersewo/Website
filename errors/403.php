@@ -1,4 +1,5 @@
 <?php
+http_response_code(403);
 $pageName = '403 - Skuld';
 ?>
 <!DOCTYPE html>

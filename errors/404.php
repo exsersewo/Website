@@ -1,4 +1,5 @@
 <?php
+http_response_code(404);
 $pageName = '404 - Skuld';
 ?>
 
