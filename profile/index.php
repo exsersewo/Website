@@ -45,7 +45,7 @@
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $q = "";
-
+    
     $q = curl_exec($ch);
 
     curl_close($ch);
@@ -112,7 +112,7 @@ if(isset($userData->experience))
                     <div class="microhead">
                         <h1>General Info</h1>
                     </div>
-                    <div class="microcontent">
+                    <div class="microcontent info">
                         <p>Money: ₩<?=number_format($userData->money)?></p>
                         <p>Last Daily Use: <?=date('d/m/Y', $userData->daily)?></p>
                     </div>
@@ -125,7 +125,7 @@ if(isset($userData->experience))
                         <h1>Global Ranking</h1><h1 class="right" style="margin-top:-80px;line-height:75px;margin-right:24px;">
                         <?=number_format($userData->experience->currentRank)?>/<?=number_format($userData->experience->totalRank)?></h1>
                     </div>
-                    <div class="microcontent">
+                    <div class="microcontent info">
                         <p>Total XP: <?=number_format($userData->experience->totalXP)?></p>
                         <p>Progress to level <?=intval($userData->experience->currentLevel)+1?>: <?=number_format($userData->experience->currentXP)?>/<?=number_format($nextLevel)?></p>
                         <?php
@@ -164,7 +164,7 @@ if(isset($userData->experience))
                     <div class="microhead">
                         <h1>Current Background</h1>
                     </div>
-                    <div class="microcontent" style="margin-left:-15px;margin-top:-10px;">
+                    <div class="microcontent background">
                         <div style="background:<?=(strpos($userData->background, '#') !== 0) ? 'url('.$userData->background.')' : $userData->background?>;background-size:auto 500px;width:auto;height:500px;"></div>
                     </div>
                 </div>
@@ -172,8 +172,11 @@ if(isset($userData->experience))
                     <div class="microhead">
                         <h1>Change Background</h1>
                     </div>
-                    <div class="microcontent">
-
+                    <div class="microcontent background" style="padding-bottom:10px;">
+                        <div style="margin-left:15px;margin-top:10px;display:inline-block;width:100%;">
+                            <input id="backgroundlink" type="url" placeholder="https://cdn.discordapp.com/attachments/251204800383942656/546403424254558249/image0.png or #004c4c" style="width:86%;"/>
+                            <input id="backgroundsubmit" type="submit" style="float:right;margin-right:30px;" />
+                        </div>
                     </div>
                 </div>
             </div>
