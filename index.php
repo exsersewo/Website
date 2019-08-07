@@ -21,6 +21,7 @@
     else
     {
         header('Location: /home');
+        die();
     }
 
     $page = strtolower($page);
