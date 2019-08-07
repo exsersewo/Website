@@ -19,7 +19,7 @@
     </div>
     <div class="footer-content footer-right right">
         <h3>Contact</h3>
-        <span>If there is anything you need to contact us about, do so with this email <a href="mailto:hello@skuldbot.uk">hello@skuldbot.uk</a></span>
+        <span>If there is anything you need to contact us about, do so with this email <a href="mailto:contact@skuldbot.uk">contact@skuldbot.uk</a></span>
     </div>
     <div class="footer-content footer-right right">
         <h3>Information</h3>
