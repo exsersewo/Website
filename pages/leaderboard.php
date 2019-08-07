@@ -24,6 +24,7 @@
         const page = '<?=$_GET['t'];?>';
         <?=(isset($_GET['g'])) ? 'const guild = \''.$_GET['g'].'\'' : 'const guild = 0'?>;
     </script>
+    <script type="text/javascript" src="//unpkg.com/snekfetch"></script>
     <script type="text/javascript" src="/content/js/leaderboard.js"></script>
 </head>
 <body>
@@ -36,7 +37,9 @@ include $templateRoot.'/nav.php';
     <div class="section">
         <h3 id="title" class="center" style="margin-top:5vh;text-decoration:underline;"></h3>
         <div class="features">
+            <ul id="leaderboard">
 
+            </ul>
         </div>
     </div>
 </main>
