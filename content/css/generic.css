@@ -68,7 +68,7 @@ nav
     text-align:center;
     position:fixed;
     top:0;
-    z-index:100;
+    z-index:101;
 }
 nav a,
 nav a:visited
