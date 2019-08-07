@@ -73,4 +73,10 @@ function checkHover()
 
 </script>
 </nav>
+<?php
+if($isDev)
+{
+	echo '<div style="position:fixed;display:block;width:100%;height:30px;background-color:var(--dark);top:64px;z-index:100;"><span style="height:100%;text-align:center;display:block;margin:0 auto;font-size:1.5rem;z-index:100;">This website is currently being built, please don\'t mind the unfinished nature of it.</span></div>';
+}
+?>
 <div id="navhandler" style="width:100%;height:100%;display:none;position:fixed;margin:0;padding:0;z-index:99;" onclick="hideMenu()"></div>
