@@ -80,4 +80,14 @@ function getSocialMediaLink($platform, $url)
     $ret = $ret.'</a>';
     return $ret;
 }
+
+function getUsingCURL($weburl, $curlopts)
+{
+    $ch = curl_init();
+    curl_setopt_array($ch, $curlopts);
+    curl_setopt($ch, CURLOPT_URL, $weburl);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
 ?>
