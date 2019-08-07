@@ -1,4 +1,6 @@
 <?php
+$discordbase = 'https://discordapp.com/api/v6';
+
 function getJSONGuildIDs()
 {
     $dbconnection = new mysqli(MySQLConf::Hostname, MySQLConf::User, MySQLConf::Password, MySQLConf::Table, MySQLConf::Port);
@@ -44,6 +46,24 @@ function getJSONfromUser($user)
 
     $jsondGuilds.=']';
 
+    $jsondConnections = '[';
+
+    foreach($user->connections as $connection)
+    {
+        $jsondConnections.=json_encode(
+            array(
+                'id' => $connection->id,
+                'name' => $connection->name,
+                'type' => $connection->type,
+                'revoked' => $connection->revoked
+            )
+        );
+    }
+
+    $jsondConnections = substr($jsondConnections, 0, strlen($jsondConnections)-1);
+
+    $jsondConnections .= ']';
+
     //error_log('json guild took '. (microtime(true) - $start_ti));
 
     return json_encode(array(
@@ -54,8 +74,26 @@ function getJSONfromUser($user)
         'avatar' => $user->avatar,
         'verified' => $user->verified,
         'mfa_enabled' => $user->mfa_enabled,
-        'guilds' => json_decode($jsondGuilds)
+        'guilds' => json_decode($jsondGuilds),
+        'connections' => json_decode($jsondConnections)
     ));
+}
+
+function getJSONCleanfromUserID($userID)
+{
+    global $botToken;
+    global $discordbase;
+    return getUsingCURL($discordbase.'/users/'.$userID, array(CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPHEADER => array(        
+        'Authorization: Bot '.$botToken
+    )));
+}
+function getJSONfromGuilID($guildID)
+{
+    global $botToken;
+    global $discordbase;
+    return getUsingCURL($discordbase.'/guilds/'.$guildID, array(CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPHEADER => array(        
+        'Authorization: Bot '.$botToken
+    )));
 }
 
 function getGuildInfofromJSON($guildId)
@@ -143,6 +181,64 @@ function isUserBanned($id)
     }
 
     return boolval($result->fetch_assoc()["Banned"]);
+}
+
+function insertConnections($userID, $connections)
+{
+    $dbconnection = new mysqli(MySQLConf::Hostname, MySQLConf::User, MySQLConf::Password, MySQLConf::Table, MySQLConf::Port);
+
+    $cmdb = "SELECT `UserID` FROM `UserConnections` WHERE UserID = ".intval($userID).";";
+
+    $result = $dbconnection->query($cmdb);
+
+    $has = false;
+
+    if(!$result  || $result->num_rows == 0)
+    {
+        $has = false;
+    }
+    else
+    {
+        $has = true;
+    }
+
+    if(!$has)
+    {
+        $cmd = $dbconnection->prepare("INSERT INTO `UserConnections` (UserID, Twitch, Youtube, BattleNet, Skype, League, Steam, Reddit, Facebook, Twitter, Spotify, XboxLive) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $cmd->bind_param("isssssssssss", $userID, 
+        $connections["twitch"], $connections["youtube"], 
+        $connections["battlenet"], $connections["skype"], 
+        $connections["leagueoflegends"], $connections["steam"], 
+        $connections["reddit"], $connections["facebook"], 
+        $connections["twitter"], $connections["spotify"], 
+        $connections["xbox"]);
+    
+        $cmd->execute();
+    
+        $cmd->close();
+    }
+    else
+    {
+        try
+        {
+            $cmd2 = $dbconnection->prepare("UPDATE `UserConnections` SET Twitch = ?, Youtube = ?, BattleNet = ?, Skype = ?, League = ?, Steam = ?, Reddit = ?, Facebook = ?, Twitter = ?, Spotify = ?, XboxLive = ? WHERE UserID = ?");
+            $cmd2->bind_param("sssssssssssi", 
+            $connections["twitch"], $connections["youtube"], 
+            $connections["battlenet"], $connections["skype"], 
+            $connections["leagueoflegends"], $connections["steam"], 
+            $connections["reddit"], $connections["facebook"], 
+            $connections["twitter"], $connections["spotify"], 
+            $connections["xbox"], $userID);
+    
+            $cmd2->execute();
+
+            $cmd2->close();
+        }
+        catch (Exception $ex)
+        {
+            die($ex);
+        }
+    }
 }
 
 function getBanReason($id)
